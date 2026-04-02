@@ -1,0 +1,1242 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>OSWorks.in — Open Source for Indian SMBs</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600;700&family=Plus+Jakarta+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --cream:#FDFAF6;--white:#FFFFFF;--green:#2D6A4F;--green-dark:#1B4332;
+  --green-pale:#EEF5F1;--green-mid:#C8DAD0;--gold:#C9933A;--gold-pale:#FDF4E7;
+  --gold-light:#F5E6CC;--text:#1C2B22;--text-mid:#4A5E52;--text-soft:#8A9E92;
+  --border:#DDE8E2;--border-soft:#EBF2EE;
+  --shadow:0 1px 3px rgba(45,106,79,.07),0 4px 16px rgba(45,106,79,.05);
+  --blue-pale:#EAF2FF;--blue:#1A5FAB;--purple-pale:#F3EBF9;--purple:#6B27A0;
+  --red-pale:#FFEBEB;--red:#C02B2B;
+}
+body{font-family:'Plus Jakarta Sans',sans-serif;background:var(--cream);color:var(--text);font-size:15px;line-height:1.6}
+
+/* NAV */
+nav{background:rgba(253,250,246,.97);backdrop-filter:blur(12px);border-bottom:1px solid var(--border-soft);padding:0 2rem;display:flex;align-items:center;justify-content:space-between;height:62px;position:sticky;top:0;z-index:100}
+.logo{font-family:'Playfair Display',serif;font-weight:700;font-size:1.15rem;color:var(--text);cursor:pointer;display:flex;align-items:center;gap:9px;text-decoration:none}
+.logo em{color:var(--green);font-style:normal}
+.logo-badge{width:28px;height:28px;background:var(--green);border-radius:8px;display:flex;align-items:center;justify-content:center;color:#fff;font-size:14px;font-weight:700}
+.nav-links{display:flex;gap:1px;flex-wrap:wrap}
+.nb{padding:6px 12px;border-radius:8px;cursor:pointer;font-size:12.5px;color:var(--text-mid);font-weight:400;border:none;background:none;font-family:'Plus Jakarta Sans',sans-serif;transition:all .15s}
+.nb:hover{background:var(--green-pale);color:var(--green)}
+.nb.on{background:var(--green);color:#fff;font-weight:500}
+.nav-cta{padding:7px 18px;background:var(--gold);color:#fff;border:none;border-radius:8px;font-size:12.5px;font-weight:600;cursor:pointer;font-family:'Plus Jakarta Sans',sans-serif;white-space:nowrap}
+
+/* PAGES */
+.pg{display:none}.pg.on{display:block}
+
+/* HERO */
+.hero{background:linear-gradient(155deg,#F0F7F3 0%,#FDFAF6 55%,#FEF8F0 100%);padding:5rem 2.5rem 4rem;text-align:center;overflow:hidden;position:relative}
+.hero::before{content:'';position:absolute;top:-100px;right:-100px;width:450px;height:450px;background:radial-gradient(circle,rgba(45,106,79,.05) 0%,transparent 70%);border-radius:50%;pointer-events:none}
+.eyebrow{display:inline-flex;align-items:center;gap:7px;background:var(--white);border:1px solid var(--border);color:var(--green);padding:6px 16px;border-radius:30px;font-size:11.5px;font-weight:600;margin-bottom:1.5rem;box-shadow:var(--shadow);letter-spacing:.3px}
+.ey-dot{width:6px;height:6px;background:var(--green);border-radius:50%}
+.hero h1{font-family:'Playfair Display',serif;font-size:3rem;font-weight:700;line-height:1.15;color:var(--text);letter-spacing:-1.5px;max-width:640px;margin:0 auto 1rem}
+.hero h1 span{color:var(--green)}
+.hero p{font-size:.97rem;color:var(--text-mid);max-width:480px;margin:0 auto 2.25rem;line-height:1.75}
+.hero-btns{display:flex;gap:10px;justify-content:center;flex-wrap:wrap}
+.btn-green{padding:11px 26px;background:var(--green);color:#fff;border:none;border-radius:10px;font-size:13.5px;font-weight:600;cursor:pointer;font-family:'Plus Jakarta Sans',sans-serif}
+.btn-outline{padding:11px 26px;background:var(--white);color:var(--text);border:1.5px solid var(--border);border-radius:10px;font-size:13.5px;font-weight:500;cursor:pointer;font-family:'Plus Jakarta Sans',sans-serif}
+.stats{display:flex;justify-content:center;margin-top:4rem;border-top:1px solid var(--border);padding-top:2.75rem;max-width:680px;margin-left:auto;margin-right:auto}
+.stat{flex:1;text-align:center;padding:0 1.25rem}
+.stat+.stat{border-left:1px solid var(--border)}
+.stat h3{font-family:'Playfair Display',serif;font-size:1.9rem;font-weight:700;color:var(--green);letter-spacing:-1px}
+.stat p{font-size:10.5px;color:var(--text-soft);text-transform:uppercase;letter-spacing:.8px;margin-top:3px;font-weight:500}
+
+/* SECTIONS */
+.section{padding:4rem 2.5rem;max-width:1120px;margin:0 auto}
+.sec-label{font-size:10.5px;text-transform:uppercase;letter-spacing:1.5px;color:var(--green);font-weight:700;margin-bottom:.4rem}
+.sec-title{font-family:'Playfair Display',serif;font-size:1.8rem;font-weight:700;color:var(--text);letter-spacing:-.5px;line-height:1.2}
+.sec-sub{color:var(--text-soft);font-size:13.5px;margin-top:.4rem;max-width:440px}
+.band{background:var(--white);border-top:1px solid var(--border-soft);border-bottom:1px solid var(--border-soft);padding:3.5rem 2.5rem}
+.page-header{background:linear-gradient(135deg,#EEF5F1,#FDFAF6);padding:3rem 2.5rem 2.25rem;border-bottom:1px solid var(--border-soft)}
+.page-header .inner{max-width:1120px;margin:0 auto}
+
+/* GRIDS */
+.g3{display:grid;grid-template-columns:repeat(auto-fill,minmax(290px,1fr));gap:1.2rem}
+.g4{display:grid;grid-template-columns:repeat(4,1fr);gap:1rem}
+.g2{display:grid;grid-template-columns:1fr 1fr;gap:1.75rem}
+
+/* CARDS */
+.card{background:var(--white);border:1px solid var(--border-soft);border-radius:16px;padding:1.6rem;box-shadow:var(--shadow);transition:border-color .2s,box-shadow .2s}
+.card:hover{border-color:var(--green-mid);box-shadow:0 4px 20px rgba(45,106,79,.1)}
+.card-icon{width:44px;height:44px;border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:19px;margin-bottom:1rem}
+.ci-green{background:var(--green-pale)}.ci-gold{background:var(--gold-pale)}.ci-blue{background:var(--blue-pale)}.ci-purple{background:var(--purple-pale)}
+.card h3{font-family:'Playfair Display',serif;font-size:.97rem;font-weight:600;color:var(--text);margin-bottom:.3rem;letter-spacing:-.3px}
+.card p{font-size:12.5px;color:var(--text-mid);line-height:1.65}
+.card-pill{display:inline-flex;align-items:center;background:var(--green-pale);color:var(--green);font-size:10.5px;padding:3px 11px;border-radius:20px;margin-top:.85rem;font-weight:600}
+
+/* FEAT */
+.feat{background:var(--white);border:1px solid var(--border-soft);border-radius:16px;padding:1.6rem;cursor:pointer;transition:all .2s;box-shadow:var(--shadow)}
+.feat:hover{border-color:var(--green);transform:translateY(-2px);box-shadow:0 8px 24px rgba(45,106,79,.1)}
+.feat .fi{font-size:1.4rem;margin-bottom:.85rem}
+.feat h3{font-family:'Playfair Display',serif;font-size:.92rem;font-weight:600;color:var(--text);margin-bottom:.3rem}
+.feat p{font-size:12px;color:var(--text-mid);line-height:1.6}
+.feat-arrow{font-size:12.5px;color:var(--green);margin-top:.7rem;font-weight:600}
+
+/* TOOL CARDS */
+.tool-card{background:var(--white);border:1px solid var(--border-soft);border-radius:16px;padding:1.4rem;box-shadow:var(--shadow);display:flex;flex-direction:column;gap:.8rem}
+.tool-head{display:flex;align-items:center;gap:11px}
+.tool-av{width:46px;height:46px;border-radius:12px;display:flex;align-items:center;justify-content:center;font-family:'Playfair Display',serif;font-size:12px;font-weight:700;flex-shrink:0}
+.tool-meta h3{font-family:'Playfair Display',serif;font-size:.92rem;font-weight:600;color:var(--text)}
+.tool-meta p{font-size:11.5px;color:var(--text-soft)}
+.tags{display:flex;flex-wrap:wrap;gap:4px}
+.tag{font-size:10.5px;padding:3px 9px;border-radius:20px;font-weight:600}
+.tg{background:#E8F5ED;color:#2A6045}.tb{background:#EAF2FF;color:#1A5FAB}
+.ty{background:#FFF4E5;color:#9A5800}.tp{background:#F3EBF9;color:#6B27A0}
+.tr{background:#FFEBEB;color:#C02B2B}.tw{background:#E8F5E9;color:#1B5E20}
+.tool-desc{font-size:12.5px;color:var(--text-mid);line-height:1.65}
+.tool-foot{display:flex;align-items:center;justify-content:space-between;border-top:1px solid var(--border-soft);padding-top:.8rem}
+.tool-foot span{font-size:11.5px;color:var(--text-soft)}
+.btn-sm{padding:5px 14px;background:var(--green);color:#fff;border:none;border-radius:7px;font-size:11.5px;font-weight:600;cursor:pointer;font-family:'Plus Jakarta Sans',sans-serif}
+
+/* SEARCH */
+.search-wrap{display:flex;gap:.75rem;margin-bottom:1.75rem}
+.search-input{flex:1;padding:10px 16px;border:1.5px solid var(--border);border-radius:10px;font-size:13.5px;background:var(--white);font-family:'Plus Jakarta Sans',sans-serif;outline:none;color:var(--text)}
+.search-input:focus{border-color:var(--green)}
+.search-btn{padding:10px 20px;background:var(--green);color:#fff;border:none;border-radius:10px;font-size:12.5px;font-weight:600;cursor:pointer;font-family:'Plus Jakarta Sans',sans-serif}
+
+/* FILTERS */
+.filter-bar{display:flex;gap:.35rem;flex-wrap:wrap;margin-bottom:1.75rem}
+.ff{padding:5px 13px;border:1.5px solid var(--border);background:var(--white);border-radius:20px;font-size:12px;cursor:pointer;font-family:'Plus Jakarta Sans',sans-serif;color:var(--text-mid);font-weight:500;transition:all .15s}
+.ff:hover{border-color:var(--green);color:var(--green)}
+.ff.on{background:var(--green);color:#fff;border-color:var(--green)}
+
+/* COMMUNITY */
+.leaderboard{background:var(--white);border:1px solid var(--border-soft);border-radius:16px;overflow:hidden;box-shadow:var(--shadow)}
+.lb-head{padding:.9rem 1.4rem;border-bottom:1px solid var(--border-soft);font-family:'Playfair Display',serif;font-weight:600;font-size:.88rem}
+.lb-row{display:flex;align-items:center;gap:10px;padding:.8rem 1.4rem;border-bottom:1px solid var(--border-soft)}
+.lb-row:last-child{border-bottom:none}
+.lb-n{width:18px;font-size:12.5px;font-weight:600;color:var(--text-soft)}
+.lb-av{width:34px;height:34px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;flex-shrink:0}
+.lb-info{flex:1}
+.lb-name{font-size:13px;font-weight:500;color:var(--text)}
+.lb-loc{font-size:10.5px;color:var(--text-soft)}
+.lb-pts{font-family:'Playfair Display',serif;font-size:12.5px;font-weight:600;color:var(--green)}
+.act-feed{display:flex;flex-direction:column;gap:.55rem}
+.act-item{background:var(--white);border:1px solid var(--border-soft);border-radius:12px;padding:.85rem 1rem;display:flex;gap:9px;align-items:start;box-shadow:var(--shadow)}
+.act-dot{width:7px;height:7px;border-radius:50%;flex-shrink:0;margin-top:5px}
+.act-text{font-size:12.5px;color:var(--text-mid);line-height:1.5}
+.act-text strong{font-weight:600;color:var(--text)}
+.act-time{font-size:10.5px;color:var(--text-soft);margin-top:2px}
+.badge-row{display:flex;flex-wrap:wrap;gap:.45rem;margin-bottom:1.75rem}
+.badge{display:flex;align-items:center;gap:6px;background:var(--white);border:1.5px solid var(--border);padding:5px 13px;border-radius:20px;font-size:11.5px;font-weight:500;color:var(--text-mid);box-shadow:var(--shadow)}
+.badge-dot{width:7px;height:7px;border-radius:50%}
+.notify{background:var(--gold-pale);border:1.5px solid var(--gold-light);border-radius:10px;padding:.65rem 1.1rem;margin-bottom:1.75rem;font-size:12.5px;color:var(--text);display:flex;align-items:center;gap:8px}
+
+/* PROJECT CARDS */
+.proj-card{background:var(--white);border:1px solid var(--border-soft);border-radius:16px;overflow:hidden;box-shadow:var(--shadow);transition:box-shadow .2s}
+.proj-card:hover{box-shadow:0 6px 24px rgba(45,106,79,.1)}
+.proj-banner{height:140px;display:flex;align-items:center;justify-content:center;font-family:'Playfair Display',serif;font-size:1.25rem;font-weight:700;letter-spacing:3px}
+.proj-body{padding:1.1rem}
+.proj-top{display:flex;align-items:center;justify-content:space-between;margin-bottom:.5rem}
+.proj-college{font-size:10.5px;color:var(--text-soft);text-transform:uppercase;letter-spacing:.4px;font-weight:500}
+.ss-seek{font-size:10.5px;padding:2px 9px;border-radius:20px;background:var(--gold-pale);color:var(--gold);font-weight:600}
+.ss-adpt{font-size:10.5px;padding:2px 9px;border-radius:20px;background:var(--green-pale);color:var(--green);font-weight:600}
+.proj-body h3{font-family:'Playfair Display',serif;font-size:.9rem;font-weight:600;color:var(--text);margin-bottom:.3rem}
+.proj-body p{font-size:12px;color:var(--text-mid);line-height:1.6}
+.proj-foot{display:flex;align-items:center;justify-content:space-between;margin-top:.85rem;padding-top:.8rem;border-top:1px solid var(--border-soft)}
+.stacks{display:flex;gap:4px;flex-wrap:wrap}
+.sk{font-size:10px;background:var(--cream);border:1px solid var(--border);padding:2px 7px;border-radius:5px;color:var(--text-soft)}
+.btn-interest{font-size:11.5px;padding:5px 12px;background:var(--green);color:#fff;border:none;border-radius:7px;cursor:pointer;font-weight:600;font-family:'Plus Jakarta Sans',sans-serif}
+
+/* GUIDE CARDS */
+.guide-item{background:var(--white);border:1px solid var(--border-soft);border-radius:12px;padding:.95rem 1.1rem;display:flex;gap:.85rem;align-items:start;box-shadow:var(--shadow)}
+.guide-num{width:31px;height:31px;background:var(--green);color:#fff;border-radius:9px;display:flex;align-items:center;justify-content:center;font-family:'Playfair Display',serif;font-weight:700;font-size:12px;flex-shrink:0}
+.guide-con h4{font-size:.86rem;font-weight:600;color:var(--text);margin-bottom:2px}
+.guide-con p{font-size:11.5px;color:var(--text-soft);line-height:1.5}
+.guide-con em{font-size:10.5px;color:var(--green);font-weight:600;font-style:normal;margin-top:3px;display:block}
+
+/* CASE CARDS */
+.case-card{background:var(--white);border:1px solid var(--border-soft);border-radius:16px;padding:1.4rem;box-shadow:var(--shadow)}
+.case-top{display:flex;align-items:start;justify-content:space-between;margin-bottom:.8rem}
+.case-biz{font-family:'Playfair Display',serif;font-size:.97rem;font-weight:600;color:var(--text)}
+.case-loc{font-size:11.5px;color:var(--text-soft);margin-top:2px}
+.case-tool{font-size:11.5px;background:var(--green-pale);color:var(--green);padding:3px 12px;border-radius:20px;font-weight:600}
+.case-quote{font-size:12.5px;color:var(--text-mid);font-style:italic;line-height:1.7;border-left:3px solid var(--gold-light);padding-left:.9rem;margin:.8rem 0}
+.case-stats{display:flex;gap:1.25rem;padding-top:.8rem;border-top:1px solid var(--border-soft)}
+.cs strong{display:block;font-family:'Playfair Display',serif;font-size:1.1rem;font-weight:700;color:var(--green)}
+.cs span{font-size:10.5px;color:var(--text-soft)}
+
+/* ABOUT */
+.mission{background:var(--green);border-radius:20px;padding:2.75rem;color:#fff;margin-bottom:1.5rem}
+.mission h2{font-family:'Playfair Display',serif;font-size:1.85rem;font-weight:700;margin-bottom:.85rem;line-height:1.2}
+.mission p{color:rgba(255,255,255,.72);font-size:.93rem;line-height:1.75;max-width:560px}
+.pillar-grid{display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-top:1.5rem}
+.pillar{background:var(--white);border:1px solid var(--border-soft);border-radius:14px;padding:1.4rem;box-shadow:var(--shadow)}
+.pillar-n{font-family:'Playfair Display',serif;font-size:2.2rem;font-weight:700;color:var(--green);opacity:.15;line-height:1}
+.pillar h3{font-family:'Playfair Display',serif;font-size:.9rem;font-weight:600;color:var(--text);margin:.4rem 0 .3rem}
+.pillar p{font-size:12px;color:var(--text-mid);line-height:1.6}
+.team-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1rem;margin-top:1.2rem}
+.team-card{background:var(--white);border:1px solid var(--border-soft);border-radius:14px;padding:1.4rem;text-align:center;box-shadow:var(--shadow)}
+.team-av{width:54px;height:54px;border-radius:50%;margin:0 auto .85rem;display:flex;align-items:center;justify-content:center;font-family:'Playfair Display',serif;font-weight:700;font-size:.9rem}
+.team-card h4{font-size:.86rem;font-weight:600;color:var(--text);margin-bottom:2px}
+.team-card span{font-size:11px;color:var(--text-soft)}
+
+/* UTILS */
+.col-gap{display:flex;flex-direction:column;gap:.65rem}
+.cta-bar{background:var(--green);border-radius:14px;padding:1.85rem;display:flex;align-items:center;justify-content:space-between;margin-top:2.25rem}
+.cta-bar .label{font-family:'Playfair Display',serif;font-size:1rem;font-weight:600;color:#fff;margin-bottom:.25rem}
+.cta-bar .sub{font-size:12.5px;color:rgba(255,255,255,.62)}
+.cta-bar button{padding:9px 20px;background:#fff;color:var(--green);border:none;border-radius:9px;font-size:12.5px;font-weight:700;cursor:pointer;font-family:'Plus Jakarta Sans',sans-serif;white-space:nowrap;flex-shrink:0}
+.promo-grid{display:grid;grid-template-columns:1fr 1fr;gap:1.2rem;max-width:1120px;margin:0 auto;padding:0 2.5rem 3.5rem}
+.green-cta-box{background:var(--green);border-radius:18px;padding:2rem;color:#fff}
+.gold-cta-box{background:var(--gold-pale);border:1.5px solid var(--gold-light);border-radius:18px;padding:2rem}
+.cta-eyebrow{font-size:10.5px;letter-spacing:1.2px;text-transform:uppercase;font-weight:700;margin-bottom:.6rem}
+.cta-title{font-family:'Playfair Display',serif;font-size:1.2rem;font-weight:600;margin-bottom:.65rem;letter-spacing:-.3px;line-height:1.3}
+.cta-body{font-size:12.5px;line-height:1.7;margin-bottom:1.6rem}
+footer{background:var(--white);border-top:1px solid var(--border-soft);text-align:center;padding:2.25rem;font-size:12.5px;color:var(--text-soft)}
+footer strong{color:var(--text);font-weight:600}
+.load-more{display:block;margin:2.25rem auto 0;padding:10px 26px;background:var(--white);border:1.5px solid var(--border);border-radius:9px;font-size:12.5px;cursor:pointer;color:var(--text-mid);font-family:'Plus Jakarta Sans',sans-serif}
+
+/* ── NEW: MODULE PAGE SHARED ── */
+.mod-header{padding:3rem 2.5rem 2.25rem;border-bottom:1px solid var(--border-soft)}
+.mod-header .inner{max-width:1120px;margin:0 auto}
+.mod-hero-label{font-size:10.5px;text-transform:uppercase;letter-spacing:1.5px;font-weight:700;margin-bottom:.4rem}
+.mod-hero-title{font-family:'Playfair Display',serif;font-size:2rem;font-weight:700;letter-spacing:-.5px;margin-bottom:.35rem}
+.mod-hero-sub{font-size:13.5px;line-height:1.65;max-width:540px}
+.module-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:1.1rem}
+.mod-card{background:var(--white);border:1px solid var(--border-soft);border-radius:14px;padding:1.4rem;box-shadow:var(--shadow)}
+.mod-card-head{display:flex;align-items:center;justify-content:space-between;margin-bottom:.6rem}
+.mod-card-title{font-family:'Playfair Display',serif;font-size:.92rem;font-weight:700;color:var(--text)}
+.mod-card-body{font-size:12.5px;color:var(--text-mid);line-height:1.7}
+.status-pill{font-size:10px;padding:3px 10px;border-radius:20px;font-weight:700}
+.sp-ready{background:#E8F5ED;color:#2A6045}
+.sp-progress{background:#FFF4E5;color:#9A5800}
+.sp-planned{background:#FFEBEB;color:#C02B2B}
+
+/* ── GST: HSN FINDER ── */
+.hsn-box{background:var(--green-dark);border-radius:16px;padding:2rem;margin-bottom:1.5rem;color:#fff}
+.hsn-box h3{font-family:'Playfair Display',serif;font-size:1.15rem;font-weight:700;margin-bottom:.35rem}
+.hsn-box p{font-size:12.5px;color:rgba(255,255,255,.6);margin-bottom:1.1rem}
+.hsn-row{display:flex;gap:.65rem}
+.hsn-input{flex:1;padding:10px 15px;border-radius:9px;border:1.5px solid rgba(255,255,255,.2);background:rgba(255,255,255,.1);color:#fff;font-size:13.5px;font-family:'Plus Jakarta Sans',sans-serif;outline:none}
+.hsn-input::placeholder{color:rgba(255,255,255,.4)}
+.hsn-btn{padding:10px 20px;background:var(--gold);border:none;border-radius:9px;color:#fff;font-size:13px;font-weight:700;cursor:pointer;font-family:'Plus Jakarta Sans',sans-serif}
+.hsn-result{margin-top:1.2rem;background:rgba(255,255,255,.12);border-radius:12px;padding:1rem 1.25rem;display:flex;gap:2rem;align-items:center}
+.hsn-val{font-family:'Playfair Display',serif;font-size:1.5rem;font-weight:700;color:#fff;margin-top:3px}
+.hsn-val-gold{color:var(--gold-pale)}
+.hsn-lbl{font-size:10px;color:rgba(255,255,255,.45);text-transform:uppercase;letter-spacing:.8px}
+.hsn-desc{font-size:12.5px;color:rgba(255,255,255,.8);margin-top:3px}
+
+/* ── UPI MODULE ── */
+.upi-qr-box{background:var(--green-pale);border-radius:14px;padding:1.4rem;text-align:center;border:1px solid var(--green-mid)}
+.qr-visual{width:88px;height:88px;margin:0 auto .85rem;background:var(--white);border-radius:10px;border:1px solid var(--border);display:flex;align-items:center;justify-content:center;font-size:10.5px;color:var(--text-soft)}
+.upi-apps{display:flex;gap:5px;justify-content:center;flex-wrap:wrap;margin-top:.7rem}
+.upi-app{font-size:10px;background:var(--white);border:1px solid var(--border);border-radius:6px;padding:2px 8px;color:var(--text-mid)}
+.khata-row{display:flex;align-items:center;justify-content:space-between;padding:.6rem 0;border-bottom:1px solid var(--border-soft)}
+.khata-row:last-child{border-bottom:none}
+.status-chip{font-size:10px;padding:2px 8px;border-radius:20px;font-weight:700}
+.sc-over{background:#FFEBEB;color:#C02B2B}
+.sc-due{background:#FFF4E5;color:#9A5800}
+.sc-new{background:#E8F5ED;color:#2A6045}
+.recon-row{display:flex;align-items:center;gap:1rem;padding:.65rem 1rem;border-radius:10px;border:1px solid}
+.recon-ok{background:var(--green-pale);border-color:var(--green-mid)}
+.recon-warn{background:#FFF8EE;border-color:#F5E6CC}
+
+/* ── PAYROLL MODULE ── */
+.salary-row{display:flex;justify-content:space-between;padding:.4rem 0;border-bottom:1px solid var(--border-soft)}
+.salary-row:last-child{border-bottom:none}
+.salary-label{font-size:12.5px;color:var(--text-mid)}
+.salary-val{font-size:12.5px;font-weight:500;color:var(--text)}
+.salary-deduct{color:var(--red)}
+.net-bar{background:var(--green-pale);border-radius:10px;padding:.85rem 1rem;display:flex;justify-content:space-between;align-items:center;margin-top:.75rem;border:1px solid var(--green-mid)}
+.pt-row{display:flex;align-items:center;justify-content:space-between;padding:.5rem 0;border-bottom:1px solid var(--border-soft)}
+.pt-row:last-child{border-bottom:none}
+.checklist-item{display:flex;align-items:center;gap:9px;padding:.38rem 0}
+.check-on{width:16px;height:16px;border-radius:50%;background:var(--green);color:#fff;display:flex;align-items:center;justify-content:center;font-size:10px;flex-shrink:0}
+.check-off{width:16px;height:16px;border-radius:50%;border:2px solid var(--border);flex-shrink:0}
+
+/* ── VERNACULAR ── */
+.lang-card{background:var(--white);border:1px solid var(--border-soft);border-radius:14px;padding:1.3rem;text-align:center;box-shadow:var(--shadow)}
+.lang-flag{font-size:1.8rem;margin-bottom:.6rem}
+.lang-name{font-family:'Playfair Display',serif;font-size:.95rem;font-weight:700;color:var(--text)}
+.lang-states{font-size:11.5px;color:var(--text-soft);margin-top:2px}
+.lang-prog-wrap{height:5px;background:var(--border);border-radius:5px;margin:.85rem 0 .5rem}
+.lang-prog{height:5px;border-radius:5px;background:var(--green)}
+.lang-pct{font-size:10.5px;color:var(--green);font-weight:700}
+.voice-demo{background:var(--green-dark);border-radius:14px;padding:1.75rem;color:#fff}
+.voice-bubble{background:rgba(255,255,255,.12);border-radius:12px;padding:.85rem 1.1rem;font-size:13.5px;color:#fff;margin:.5rem 0}
+.voice-bubble.user{text-align:right;background:rgba(201,147,58,.3)}
+
+/* ── WHATSAPP MODULE ── */
+.wa-phone{background:var(--green-dark);border-radius:16px;padding:1.5rem;color:#fff}
+.wa-header{display:flex;align-items:center;gap:10px;padding-bottom:1rem;border-bottom:1px solid rgba(255,255,255,.15);margin-bottom:1rem}
+.wa-av{width:36px;height:36px;border-radius:50%;background:var(--green);display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:700;color:#fff;flex-shrink:0}
+.wa-msg{background:rgba(255,255,255,.1);border-radius:10px 10px 10px 2px;padding:.65rem .9rem;font-size:12.5px;color:rgba(255,255,255,.9);margin-bottom:.4rem;max-width:85%;line-height:1.6}
+.wa-msg.sent{background:#1B5E20;border-radius:10px 10px 2px 10px;margin-left:auto}
+.wa-time{font-size:10px;color:rgba(255,255,255,.4);margin-top:2px;text-align:right}
+.wa-feature-row{display:flex;align-items:start;gap:12px;padding:.85rem;background:var(--white);border:1px solid var(--border-soft);border-radius:12px}
+.wa-feature-icon{width:36px;height:36px;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:16px;flex-shrink:0}
+
+/* ── VERTICALS ── */
+.vert-card{background:var(--white);border:1px solid var(--border-soft);border-radius:16px;overflow:hidden;box-shadow:var(--shadow);transition:box-shadow .2s}
+.vert-card:hover{box-shadow:0 6px 24px rgba(45,106,79,.1)}
+.vert-banner{height:100px;display:flex;align-items:center;justify-content:space-between;padding:0 1.4rem}
+.vert-body{padding:1.2rem}
+.vert-body h3{font-family:'Playfair Display',serif;font-size:.92rem;font-weight:700;color:var(--text);margin-bottom:.35rem}
+.vert-body p{font-size:12px;color:var(--text-mid);line-height:1.6}
+.vert-foot{display:flex;align-items:center;justify-content:space-between;padding:.85rem 1.2rem;border-top:1px solid var(--border-soft)}
+
+/* INDIA PILLARS (HOME) */
+.india-pillar{background:var(--green-pale);border-radius:14px;padding:1.4rem;cursor:pointer;border:1px solid var(--green-mid);transition:all .2s}
+.india-pillar:hover{background:var(--green);color:#fff;border-color:var(--green)}
+.india-pillar:hover h3,.india-pillar:hover p{color:#fff}
+.india-pillar:hover .ip-tag{background:rgba(255,255,255,.2);color:#fff}
+.ip-emoji{font-size:1.5rem;margin-bottom:.75rem}
+.ip-tag{font-size:10px;background:var(--white);color:var(--green);padding:3px 10px;border-radius:20px;font-weight:700;border:1px solid var(--border)}
+
+/* MONEY TAGS */
+.mt-rec{background:#E8F5ED;color:#2A6045}
+.mt-seat{background:#F3EBF9;color:#6B27A0}
+.mt-once{background:#FFF4E5;color:#9A5800}
+.mt-grant{background:#ECFDF5;color:#065F46}
+
+/* TABS */
+.tab-bar{display:flex;gap:5px;margin-bottom:1.5rem}
+.tb-btn{padding:7px 16px;border-radius:9px;border:1.5px solid var(--border);background:var(--white);font-size:12.5px;font-weight:500;cursor:pointer;color:var(--text-mid);font-family:'Plus Jakarta Sans',sans-serif;transition:all .15s}
+.tb-btn.on{background:var(--green);color:#fff;border-color:var(--green);font-weight:600}
+.tab-content{display:none}.tab-content.on{display:block}
+
+/* STAT STRIP */
+.stat-strip{display:grid;grid-template-columns:repeat(4,1fr);gap:1rem;margin-bottom:1.75rem}
+.stat-box{background:var(--white);border:1px solid var(--border-soft);border-radius:12px;padding:1rem 1.2rem;box-shadow:var(--shadow)}
+.stat-box-val{font-family:'Playfair Display',serif;font-size:1.5rem;font-weight:700;letter-spacing:-.5px}
+.stat-box-label{font-size:11px;color:var(--text-soft);margin-top:2px}
+
+/* RANGE */
+input[type=range]{width:100%;accent-color:var(--green);margin:.5rem 0}
+input[type=number]{padding:8px 12px;border:1.5px solid var(--border);border-radius:9px;font-size:13.5px;font-family:'Plus Jakarta Sans',sans-serif;color:var(--text);background:var(--cream);outline:none;width:100%}
+input[type=number]:focus{border-color:var(--green)}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a class="logo" onclick="go('home')"><div class="logo-badge">✦</div>OSWorks<em>.in</em></a>
+  <div class="nav-links">
+    <button class="nb on"  onclick="go('home',this)">Home</button>
+    <button class="nb"     onclick="go('gst',this)">GST Suite</button>
+    <button class="nb"     onclick="go('upi',this)">UPI &amp; Pay</button>
+    <button class="nb"     onclick="go('payroll',this)">HR &amp; Payroll</button>
+    <button class="nb"     onclick="go('vernacular',this)">Vernacular</button>
+    <button class="nb"     onclick="go('whatsapp',this)">WhatsApp</button>
+    <button class="nb"     onclick="go('verticals',this)">Verticals</button>
+    <button class="nb"     onclick="go('dir',this)">Directory</button>
+    <button class="nb"     onclick="go('comm',this)">Community</button>
+    <button class="nb"     onclick="go('res',this)">Resources</button>
+  </div>
+  <button class="nav-cta">Join Community</button>
+</nav>
+
+<!-- ═══════════════ HOME ═══════════════ -->
+<div class="pg on" id="p-home">
+  <div class="hero">
+    <div class="eyebrow"><span class="ey-dot"></span>Built for India's 63 million SMBs</div>
+    <h1>Open source tools,<br><span>made for India</span></h1>
+    <p>GST compliance, UPI payments, vernacular UI, WhatsApp workflows — free, self-hosted, and built for how India does business.</p>
+    <div class="hero-btns">
+      <button class="btn-green" onclick="go('dir',document.querySelectorAll('.nb')[7])">Explore Directory</button>
+      <button class="btn-outline" onclick="go('gst',document.querySelectorAll('.nb')[1])">GST Suite →</button>
+    </div>
+    <div class="stats">
+      <div class="stat"><h3>63M+</h3><p>Indian SMBs</p></div>
+      <div class="stat"><h3>120+</h3><p>Tools reviewed</p></div>
+      <div class="stat"><h3>2,400+</h3><p>Developers</p></div>
+      <div class="stat"><h3>340+</h3><p>College projects</p></div>
+      <div class="stat"><h3>7</h3><p>India modules</p></div>
+    </div>
+  </div>
+
+  <!-- India-first modules band -->
+  <div class="band">
+    <div style="max-width:1120px;margin:0 auto">
+      <div style="text-align:center;margin-bottom:2.25rem">
+        <div class="sec-label" style="text-align:center">India-first modules</div>
+        <div class="sec-title" style="text-align:center">Built for how India does business</div>
+        <div style="font-size:13.5px;color:var(--text-soft);margin-top:.4rem">Not a translation of western software — built from scratch for Indian compliance and workflows</div>
+      </div>
+      <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;margin-bottom:1rem">
+        <div class="india-pillar" onclick="go('gst',document.querySelectorAll('.nb')[1])">
+          <div class="ip-emoji">🧾</div>
+          <h3 style="font-family:'Playfair Display',serif;font-size:.97rem;font-weight:700;margin-bottom:.3rem">GST Suite</h3>
+          <p style="font-size:12.5px;color:var(--text-mid);line-height:1.6;margin-bottom:.85rem">HSN finder, GSTR export, e-invoicing IRN, e-way bills, 2A reconciliation, TDS manager.</p>
+          <span class="ip-tag">🔥 Critical</span>
+        </div>
+        <div class="india-pillar" onclick="go('upi',document.querySelectorAll('.nb')[2])">
+          <div class="ip-emoji">💳</div>
+          <h3 style="font-family:'Playfair Display',serif;font-size:.97rem;font-weight:700;margin-bottom:.3rem">UPI &amp; Payments</h3>
+          <p style="font-size:12.5px;color:var(--text-mid);line-height:1.6;margin-bottom:.85rem">UPI QR on invoices, auto-reconciliation, Khata ledger, payment reminders, ONDC integration.</p>
+          <span class="ip-tag">🔥 Critical</span>
+        </div>
+        <div class="india-pillar" onclick="go('payroll',document.querySelectorAll('.nb')[3])">
+          <div class="ip-emoji">👥</div>
+          <h3 style="font-family:'Playfair Display',serif;font-size:.97rem;font-weight:700;margin-bottom:.3rem">HR &amp; Payroll India</h3>
+          <p style="font-size:12.5px;color:var(--text-mid);line-height:1.6;margin-bottom:.85rem">PF, ESI, PT state-wise, Form 16, gratuity, bonus — India-compliant from day one.</p>
+          <span class="ip-tag">⚡ High value</span>
+        </div>
+      </div>
+      <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:1rem">
+        <div class="india-pillar" onclick="go('vernacular',document.querySelectorAll('.nb')[4])">
+          <div class="ip-emoji">🌐</div>
+          <h3 style="font-family:'Playfair Display',serif;font-size:.95rem;font-weight:700;margin-bottom:.3rem">Vernacular UI</h3>
+          <p style="font-size:12px;color:var(--text-mid);line-height:1.6;margin-bottom:.75rem">Hindi, Tamil, Telugu, Marathi, Gujarati, Kannada interfaces and deployment guides.</p>
+          <span class="ip-tag">🌟 Differentiator</span>
+        </div>
+        <div class="india-pillar" onclick="go('whatsapp',document.querySelectorAll('.nb')[5])">
+          <div class="ip-emoji">💬</div>
+          <h3 style="font-family:'Playfair Display',serif;font-size:.95rem;font-weight:700;margin-bottom:.3rem">WhatsApp-First</h3>
+          <p style="font-size:12px;color:var(--text-mid);line-height:1.6;margin-bottom:.75rem">Invoice delivery, order bot, payment reminders, daily summary — all on WhatsApp.</p>
+          <span class="ip-tag">🌟 Differentiator</span>
+        </div>
+        <div class="india-pillar" onclick="go('verticals',document.querySelectorAll('.nb')[6])">
+          <div class="ip-emoji">🏭</div>
+          <h3 style="font-family:'Playfair Display',serif;font-size:.95rem;font-weight:700;margin-bottom:.3rem">Industry Verticals</h3>
+          <p style="font-size:12px;color:var(--text-mid);line-height:1.6;margin-bottom:.75rem">Kirana, Textile, Pharma, Agri, Construction — purpose-built for Indian industries.</p>
+          <span class="ip-tag">📈 Growth</span>
+        </div>
+        <div class="india-pillar" onclick="go('dir',document.querySelectorAll('.nb')[7])">
+          <div class="ip-emoji">🗂️</div>
+          <h3 style="font-family:'Playfair Display',serif;font-size:.95rem;font-weight:700;margin-bottom:.3rem">Solutions Directory</h3>
+          <p style="font-size:12px;color:var(--text-mid);line-height:1.6;margin-bottom:.75rem">120+ open-source tools reviewed with GST tags, Hindi UI ratings, and SMB scores.</p>
+          <span class="ip-tag">Free forever</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Featured tools -->
+  <div style="max-width:1120px;margin:0 auto;padding:3.5rem 2.5rem">
+    <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:1.75rem">
+      <div><div class="sec-label">Featured this week</div><div class="sec-title">Popular solutions</div></div>
+      <button class="load-more" style="margin:0;padding:7px 16px;font-size:12.5px" onclick="go('dir',document.querySelectorAll('.nb')[7])">View all 120+ →</button>
+    </div>
+    <div class="g3">
+      <div class="card"><div class="card-icon ci-green">⚙️</div><h3>ERPNext</h3><p>Full ERP with GST filing, payroll, inventory. Most adopted by Indian manufacturers and traders.</p><div class="card-pill">✓ GST Ready · Free · हिंदी UI</div></div>
+      <div class="card"><div class="card-icon ci-gold">💬</div><h3>Chatwoot</h3><p>Omnichannel support with WhatsApp Business API — ideal for D2C brands and local services.</p><div class="card-pill">WhatsApp · Self-hosted</div></div>
+      <div class="card"><div class="card-icon ci-blue">📊</div><h3>Metabase</h3><p>No-code BI dashboards. Connect to your billing database and get live analytics instantly.</p><div class="card-pill">Free · No-code setup</div></div>
+    </div>
+  </div>
+
+  <!-- Promo -->
+  <div class="promo-grid">
+    <div class="green-cta-box">
+      <div class="cta-eyebrow" style="color:rgba(255,255,255,.5)">For developers</div>
+      <div class="cta-title" style="color:#fff">Build for India, earn bounties</div>
+      <div class="cta-body" style="color:rgba(255,255,255,.7)">GST plugins, UPI modules, Hindi translations — open bounties from ₹2,000 to ₹15,000 waiting for contributors.</div>
+      <button class="btn-outline" onclick="go('comm',document.querySelectorAll('.nb')[8])">View open bounties →</button>
+    </div>
+    <div class="gold-cta-box">
+      <div class="cta-eyebrow" style="color:var(--gold)">For college students</div>
+      <div class="cta-title">Your project could run a real business</div>
+      <div class="cta-body" style="color:var(--text-mid)">340+ projects already listed. Connect your final year project with the 63 million businesses that actually need it.</div>
+      <button class="btn-green">Submit your project →</button>
+    </div>
+  </div>
+  <footer><strong>OSWorks.in</strong> — Open source solutions for Indian small businesses &nbsp;·&nbsp; Built with Elixir + Phoenix</footer>
+</div>
+
+<!-- ═══════════════ GST SUITE ═══════════════ -->
+<div class="pg" id="p-gst">
+  <div class="mod-header" style="background:linear-gradient(135deg,#EEF5F1,#FDFAF6)">
+    <div class="inner">
+      <div class="mod-hero-label" style="color:var(--green)">India GST compliance — end to end</div>
+      <div class="mod-hero-title" style="color:var(--text)">GST Suite</div>
+      <div class="mod-hero-sub" style="color:var(--text-soft)">From HSN code lookup to GSTR filing, e-invoicing, e-way bills, and TDS — every GST obligation automated for Indian SMBs.</div>
+    </div>
+  </div>
+  <div class="section">
+    <!-- HSN Finder -->
+    <div class="hsn-box">
+      <h3>🔍 HSN / SAC Code Finder</h3>
+      <p>Type your product or service in plain language — get HSN code + GST rate instantly. Try: cotton, mobile, rice, software, cement</p>
+      <div class="hsn-row">
+        <input class="hsn-input" id="hsn-input" placeholder="e.g. cotton fabric, smartphone, consulting services…" onkeydown="if(event.key==='Enter')hsnSearch()">
+        <button class="hsn-btn" onclick="hsnSearch()">Search</button>
+      </div>
+      <div id="hsn-result" style="display:none" class="hsn-result">
+        <div><div class="hsn-lbl">HSN Code</div><div class="hsn-val" id="hsn-code">—</div></div>
+        <div><div class="hsn-lbl">GST Rate</div><div class="hsn-val hsn-val-gold" id="hsn-rate">—</div></div>
+        <div style="flex:1"><div class="hsn-lbl">Description</div><div class="hsn-desc" id="hsn-desc">—</div></div>
+      </div>
+    </div>
+
+    <!-- Stats -->
+    <div class="stat-strip">
+      <div class="stat-box"><div class="stat-box-val" style="color:var(--green)">1.4Cr+</div><div class="stat-box-label">Active GSTINs in India</div></div>
+      <div class="stat-box"><div class="stat-box-val" style="color:var(--gold)">₹18,000</div><div class="stat-box-label">Tally license per year</div></div>
+      <div class="stat-box"><div class="stat-box-val" style="color:var(--green)">₹0</div><div class="stat-box-label">OSWorks core cost</div></div>
+      <div class="stat-box"><div class="stat-box-val" style="color:var(--blue)">6</div><div class="stat-box-label">GST modules available</div></div>
+    </div>
+
+    <!-- Module Cards -->
+    <div class="sec-label" style="margin-bottom:.5rem">All GST modules</div>
+    <div class="sec-title" style="margin-bottom:1.5rem">Complete compliance toolkit</div>
+    <div class="module-grid">
+      <div class="mod-card">
+        <div class="mod-card-head"><div style="display:flex;align-items:center;gap:9px"><span style="font-size:1.2rem">📄</span><div class="mod-card-title">GSTR-1 / 3B Export</div></div><span class="status-pill sp-ready">Ready</span></div>
+        <div class="mod-card-body">One-click export of outward supply data in exact GST portal JSON/Excel format. Monthly &amp; quarterly. No manual portal entry needed.</div>
+        <div style="margin-top:.85rem"><span class="tag tg">Integration</span></div>
+      </div>
+      <div class="mod-card">
+        <div class="mod-card-head"><div style="display:flex;align-items:center;gap:9px"><span style="font-size:1.2rem">⚡</span><div class="mod-card-title">E-Invoice IRN Generator</div></div><span class="status-pill sp-progress">In Progress</span></div>
+        <div class="mod-card-body">Auto-generates Invoice Reference Numbers via NIC portal API for businesses above ₹5 Cr turnover. IRN + QR code on every B2B invoice.</div>
+        <div style="margin-top:.85rem"><span class="tag ty">API Module</span></div>
+      </div>
+      <div class="mod-card">
+        <div class="mod-card-head"><div style="display:flex;align-items:center;gap:9px"><span style="font-size:1.2rem">🚛</span><div class="mod-card-title">E-Way Bill Automation</div></div><span class="status-pill sp-planned">Planned</span></div>
+        <div class="mod-card-body">Auto-generates e-way bill from sale orders above ₹50,000. Driver receives it on WhatsApp before the truck leaves. No manual portal login.</div>
+        <div style="margin-top:.85rem"><span class="tag tb">Integration</span></div>
+      </div>
+      <div class="mod-card">
+        <div class="mod-card-head"><div style="display:flex;align-items:center;gap:9px"><span style="font-size:1.2rem">🔄</span><div class="mod-card-title">GSTR-2A Reconciliation</div></div><span class="status-pill sp-planned">Planned</span></div>
+        <div class="mod-card-body">Matches your purchase invoices against GSTR-2A auto-populated data. Flags mismatches before ITC is denied — saves thousands in lost input credit.</div>
+        <div style="margin-top:.85rem"><span class="tag tg">Analytics</span></div>
+      </div>
+      <div class="mod-card">
+        <div class="mod-card-head"><div style="display:flex;align-items:center;gap:9px"><span style="font-size:1.2rem">📊</span><div class="mod-card-title">TDS / TCS Manager</div></div><span class="status-pill sp-progress">In Progress</span></div>
+        <div class="mod-card-body">Tracks TDS deducted from contractors and vendors. Generates Form 16A, prepares 26Q challan data for quarterly filing. Due date alerts included.</div>
+        <div style="margin-top:.85rem"><span class="tag tp">Compliance</span></div>
+      </div>
+      <div class="mod-card">
+        <div class="mod-card-head"><div style="display:flex;align-items:center;gap:9px"><span style="font-size:1.2rem">🏷️</span><div class="mod-card-title">Composition Scheme Tools</div></div><span class="status-pill sp-planned">Planned</span></div>
+        <div class="mod-card-body">Special tools for businesses under GST composition scheme (turnover under ₹1.5 Cr). Simplified CMP-08 filing and annual GSTR-4 preparation.</div>
+        <div style="margin-top:.85rem"><span class="tag tg">Compliance</span></div>
+      </div>
+    </div>
+
+    <!-- Money model -->
+    <div style="background:var(--green-dark);border-radius:16px;padding:2rem;margin-top:2rem;color:#fff">
+      <div style="font-family:'Playfair Display',serif;font-size:1.1rem;font-weight:700;margin-bottom:1.25rem">💰 How OSWorks makes money from GST Suite</div>
+      <div style="display:grid;grid-template-columns:repeat(2,1fr);gap:1rem">
+        <div style="background:rgba(255,255,255,.1);border-radius:12px;padding:1.1rem">
+          <div style="font-size:10px;text-transform:uppercase;letter-spacing:.8px;color:rgba(255,255,255,.5);margin-bottom:5px">Managed Hosting</div>
+          <div style="font-size:1rem;font-weight:700;color:#fff;font-family:'Playfair Display',serif">₹999/month</div>
+          <div style="font-size:12px;color:rgba(255,255,255,.65);margin-top:4px;line-height:1.6">Pre-configured GST-ready ERPNext on a ₹500 VPS. OSWorks handles setup, updates, backups.</div>
+        </div>
+        <div style="background:rgba(255,255,255,.1);border-radius:12px;padding:1.1rem">
+          <div style="font-size:10px;text-transform:uppercase;letter-spacing:.8px;color:rgba(255,255,255,.5);margin-bottom:5px">GST Filing Service</div>
+          <div style="font-size:1rem;font-weight:700;color:var(--gold-pale);font-family:'Playfair Display',serif">₹499/month</div>
+          <div style="font-size:12px;color:rgba(255,255,255,.65);margin-top:4px;line-height:1.6">Connect your ERP — OSWorks auto-prepares GSTR-1/3B. CA reviews and files on your behalf.</div>
+        </div>
+        <div style="background:rgba(255,255,255,.1);border-radius:12px;padding:1.1rem">
+          <div style="font-size:10px;text-transform:uppercase;letter-spacing:.8px;color:rgba(255,255,255,.5);margin-bottom:5px">CA Partner Referral</div>
+          <div style="font-size:1rem;font-weight:700;color:#fff;font-family:'Playfair Display',serif">15% per project</div>
+          <div style="font-size:12px;color:rgba(255,255,255,.65);margin-top:4px;line-height:1.6">Verified CAs pay listing fee + 15% referral on each GST setup project via OSWorks.</div>
+        </div>
+        <div style="background:rgba(255,255,255,.1);border-radius:12px;padding:1.1rem">
+          <div style="font-size:10px;text-transform:uppercase;letter-spacing:.8px;color:rgba(255,255,255,.5);margin-bottom:5px">Enterprise Support</div>
+          <div style="font-size:1rem;font-weight:700;color:var(--gold-pale);font-family:'Playfair Display',serif">₹4,999/month</div>
+          <div style="font-size:12px;color:rgba(255,255,255,.65);margin-top:4px;line-height:1.6">50+ employee businesses get priority support, custom GST configurations, dedicated implementation.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="cta-bar">
+      <div><div class="label">Beating Tally at ₹18,000/year</div><div class="sub">OSWorks GST Suite is free. Pay only for managed hosting or filing service — not the software.</div></div>
+      <button>Get started free →</button>
+    </div>
+  </div>
+  <footer><strong>OSWorks.in</strong> — GST compliance for Indian SMBs</footer>
+</div>
+
+<!-- ═══════════════ UPI & PAYMENTS ═══════════════ -->
+<div class="pg" id="p-upi">
+  <div class="mod-header" style="background:linear-gradient(135deg,#E8EAF6,#FDFAF6)">
+    <div class="inner">
+      <div class="mod-hero-label" style="color:#1A237E">India payments — collect, reconcile, track</div>
+      <div class="mod-hero-title" style="color:var(--text)">UPI &amp; Payments</div>
+      <div class="mod-hero-sub" style="color:var(--text-soft)">Most SMBs collect 80% of payments via UPI but track zero automatically. This module connects UPI to your ERP — fully automated.</div>
+    </div>
+  </div>
+  <div class="section">
+    <div class="stat-strip">
+      <div class="stat-box"><div class="stat-box-val" style="color:#3949AB">35Cr+</div><div class="stat-box-label">UPI transactions/day</div></div>
+      <div class="stat-box"><div class="stat-box-val" style="color:var(--green)">₹0</div><div class="stat-box-label">UPI transaction fee</div></div>
+      <div class="stat-box"><div class="stat-box-val" style="color:var(--gold)">85%</div><div class="stat-box-label">WA message open rate</div></div>
+      <div class="stat-box"><div class="stat-box-val" style="color:var(--green)">6</div><div class="stat-box-label">Payment modules</div></div>
+    </div>
+
+    <div class="g2" style="margin-bottom:1.5rem">
+      <!-- UPI QR Generator -->
+      <div class="card">
+        <h3>💳 UPI QR on Every Invoice</h3>
+        <p style="font-size:12.5px;color:var(--text-soft);margin:.3rem 0 1rem">Enter amount → QR embeds on invoice PDF automatically</p>
+        <div style="margin-bottom:1rem">
+          <div style="font-size:12px;color:var(--text-mid);margin-bottom:.4rem">Invoice Amount (₹)</div>
+          <input type="number" id="upi-amount" value="5000" oninput="updateUPI()">
+        </div>
+        <div class="upi-qr-box">
+          <div class="qr-visual">📱 QR</div>
+          <div style="font-size:13px;font-weight:700;color:var(--green-dark)">Pay ₹<span id="upi-display">5,000</span></div>
+          <div style="font-size:11px;color:var(--text-soft);margin-top:3px">UPI ID: business@upi</div>
+          <div class="upi-apps">
+            <span class="upi-app">PhonePe</span><span class="upi-app">GPay</span>
+            <span class="upi-app">Paytm</span><span class="upi-app">BHIM</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Khata -->
+      <div class="card">
+        <h3>📒 Digital Khata Ledger</h3>
+        <p style="font-size:12.5px;color:var(--text-soft);margin:.3rem 0 1rem">Open-source OkCredit — track udhaari, send WhatsApp reminders</p>
+        <div id="khata-list">
+          <div class="khata-row"><div><div style="font-size:13px;font-weight:600;color:var(--text)">Ramesh Traders</div><div style="font-size:11px;color:var(--text-soft)">18 days pending</div></div><div style="text-align:right"><div style="font-family:'Playfair Display',serif;font-size:.9rem;font-weight:700;color:var(--green)">₹12,400</div><span class="status-chip sc-over">Overdue</span></div></div>
+          <div class="khata-row"><div><div style="font-size:13px;font-weight:600;color:var(--text)">Patel Enterprises</div><div style="font-size:11px;color:var(--text-soft)">7 days pending</div></div><div style="text-align:right"><div style="font-family:'Playfair Display',serif;font-size:.9rem;font-weight:700;color:var(--green)">₹6,200</div><span class="status-chip sc-due">Due soon</span></div></div>
+          <div class="khata-row"><div><div style="font-size:13px;font-weight:600;color:var(--text)">Singh &amp; Sons</div><div style="font-size:11px;color:var(--text-soft)">3 days pending</div></div><div style="text-align:right"><div style="font-family:'Playfair Display',serif;font-size:.9rem;font-weight:700;color:var(--green)">₹3,800</div><span class="status-chip sc-new">New</span></div></div>
+          <div class="khata-row"><div><div style="font-size:13px;font-weight:600;color:var(--text)">Kumar Retail</div><div style="font-size:11px;color:var(--text-soft)">25 days pending</div></div><div style="text-align:right"><div style="font-family:'Playfair Display',serif;font-size:.9rem;font-weight:700;color:var(--green)">₹9,150</div><span class="status-chip sc-over">Overdue</span></div></div>
+        </div>
+        <button class="btn-green" style="width:100%;margin-top:.9rem;padding:9px">Send WhatsApp reminders to all →</button>
+      </div>
+    </div>
+
+    <!-- Reconciliation -->
+    <div class="card" style="margin-bottom:1.5rem">
+      <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:1rem">
+        <div><h3>🔄 UPI Auto-Reconciliation</h3><p style="font-size:12px;color:var(--text-soft);margin-top:2px">Bank feed → auto-matched to open invoices. No manual entry.</p></div>
+        <div style="display:flex;gap:6px"><span class="tag tg">13 matched</span><span class="tag ty">2 pending</span></div>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:.5rem">
+        <div class="recon-row recon-ok"><div style="width:8px;height:8px;border-radius:50%;background:var(--green);flex-shrink:0"></div><div style="flex:1;font-size:12.5px;color:var(--text-mid)">9876543210@paytm</div><div style="font-family:'Playfair Display',serif;font-size:.9rem;font-weight:700;color:var(--green-dark)">₹12,400</div><div style="font-size:11.5px;color:var(--text-soft)">INV-2024-089</div><span class="tag tg">Auto-matched</span></div>
+        <div class="recon-row recon-ok"><div style="width:8px;height:8px;border-radius:50%;background:var(--green);flex-shrink:0"></div><div style="flex:1;font-size:12.5px;color:var(--text-mid)">ramesh@phonepe</div><div style="font-family:'Playfair Display',serif;font-size:.9rem;font-weight:700;color:var(--green-dark)">₹6,200</div><div style="font-size:11.5px;color:var(--text-soft)">INV-2024-091</div><span class="tag tg">Auto-matched</span></div>
+        <div class="recon-row recon-warn"><div style="width:8px;height:8px;border-radius:50%;background:var(--gold);flex-shrink:0"></div><div style="flex:1;font-size:12.5px;color:var(--text-mid)">unknown@upi</div><div style="font-family:'Playfair Display',serif;font-size:.9rem;font-weight:700;color:var(--green-dark)">₹3,200</div><div style="font-size:11.5px;color:var(--text-soft)">—</div><span class="tag ty">Review needed</span></div>
+      </div>
+    </div>
+
+    <!-- Revenue models -->
+    <div style="background:linear-gradient(135deg,#1A237E,#3949AB);border-radius:16px;padding:2rem;color:#fff">
+      <div style="font-family:'Playfair Display',serif;font-size:1.1rem;font-weight:700;margin-bottom:1.25rem">💰 Monetization — UPI &amp; Payments</div>
+      <div style="display:grid;grid-template-columns:repeat(2,1fr);gap:1rem">
+        <div style="background:rgba(255,255,255,.1);border-radius:12px;padding:1rem"><div style="font-size:10px;text-transform:uppercase;letter-spacing:.8px;color:rgba(255,255,255,.5);margin-bottom:4px">Khata SaaS</div><div style="font-size:1rem;font-weight:700;font-family:'Playfair Display',serif">₹299/month</div><div style="font-size:12px;color:rgba(255,255,255,.65);margin-top:3px">Free up to 50 customers. Unlimited at ₹299/mo. OkCredit model — open source + ERP integration.</div></div>
+        <div style="background:rgba(255,255,255,.1);border-radius:12px;padding:1rem"><div style="font-size:10px;text-transform:uppercase;letter-spacing:.8px;color:rgba(255,255,255,.5);margin-bottom:4px">WA Reminder Credits</div><div style="font-size:1rem;font-weight:700;font-family:'Playfair Display',serif;color:#C5CAE9">₹199 / 500 msgs</div><div style="font-size:12px;color:rgba(255,255,255,.65);margin-top:3px">Each WhatsApp message costs ₹0.35 via Meta API. Sell in packs at 40% margin.</div></div>
+        <div style="background:rgba(255,255,255,.1);border-radius:12px;padding:1rem"><div style="font-size:10px;text-transform:uppercase;letter-spacing:.8px;color:rgba(255,255,255,.5);margin-bottom:4px">ONDC Onboarding</div><div style="font-size:1rem;font-weight:700;font-family:'Playfair Display',serif">₹2,999 one-time</div><div style="font-size:12px;color:rgba(255,255,255,.65);margin-top:3px">Full ONDC seller setup + training. Compete with Flipkart/Amazon via open network.</div></div>
+        <div style="background:rgba(255,255,255,.1);border-radius:12px;padding:1rem"><div style="font-size:10px;text-transform:uppercase;letter-spacing:.8px;color:rgba(255,255,255,.5);margin-bottom:4px">Reconciliation API</div><div style="font-size:1rem;font-weight:700;font-family:'Playfair Display',serif;color:#C5CAE9">₹10,000/month</div><div style="font-size:12px;color:rgba(255,255,255,.65);margin-top:3px">Banks and accounting SaaS pay for the reconciliation engine as a B2B API.</div></div>
+      </div>
+    </div>
+  </div>
+  <footer><strong>OSWorks.in</strong> — UPI &amp; payments for Indian SMBs</footer>
+</div>
+
+<!-- ═══════════════ HR & PAYROLL ═══════════════ -->
+<div class="pg" id="p-payroll">
+  <div class="mod-header" style="background:linear-gradient(135deg,#F3E5F5,#FDFAF6)">
+    <div class="inner">
+      <div class="mod-hero-label" style="color:#7B1FA2">India labour law compliance</div>
+      <div class="mod-hero-title" style="color:var(--text)">HR &amp; Payroll India</div>
+      <div class="mod-hero-sub" style="color:var(--text-soft)">PF, ESI, state-wise PT, Form 16, gratuity, bonus — legally correct payroll for Indian SMBs. No CA, no Excel jugglery.</div>
+    </div>
+  </div>
+  <div class="section">
+    <div class="stat-strip">
+      <div class="stat-box"><div class="stat-box-val" style="color:#7B1FA2">6Cr+</div><div class="stat-box-label">MSME employees</div></div>
+      <div class="stat-box"><div class="stat-box-val" style="color:var(--red)">₹6,999</div><div class="stat-box-label">Keka charges per month</div></div>
+      <div class="stat-box"><div class="stat-box-val" style="color:var(--green)">₹49</div><div class="stat-box-label">OSWorks per employee</div></div>
+      <div class="stat-box"><div class="stat-box-val" style="color:var(--blue)">28</div><div class="stat-box-label">Indian states supported</div></div>
+    </div>
+
+    <div class="g2" style="margin-bottom:1.5rem">
+      <!-- Salary Calculator -->
+      <div class="card">
+        <h3>🧮 Live Payroll Calculator</h3>
+        <p style="font-size:12px;color:var(--text-soft);margin:.3rem 0 1.1rem">Drag to set basic salary — see India-compliant breakup instantly</p>
+        <div style="margin-bottom:1.1rem">
+          <div style="display:flex;justify-content:space-between;font-size:11.5px;color:var(--text-soft);margin-bottom:.3rem"><span>Basic Salary</span><strong id="basic-display" style="color:var(--green)">₹30,000</strong></div>
+          <input type="range" min="5000" max="100000" step="1000" value="30000" id="basic-slider" oninput="updatePayroll()">
+          <div style="display:flex;justify-content:space-between;font-size:10.5px;color:var(--text-soft)"><span>₹5,000</span><span>₹1,00,000</span></div>
+        </div>
+        <div id="payroll-rows">
+          <div class="salary-row"><span class="salary-label">Basic Salary</span><span class="salary-val" id="pr-basic">₹30,000</span></div>
+          <div class="salary-row"><span class="salary-label">HRA (40%)</span><span class="salary-val" id="pr-hra">₹12,000</span></div>
+          <div class="salary-row"><span class="salary-label" style="font-weight:600;color:var(--text)">Gross Total</span><span class="salary-val" style="font-weight:700" id="pr-gross">₹42,000</span></div>
+          <div class="salary-row"><span class="salary-label">EPF (12% of basic)</span><span class="salary-val salary-deduct" id="pr-pf">− ₹3,600</span></div>
+          <div class="salary-row"><span class="salary-label" id="pr-esi-lbl">ESI (0.75%)</span><span class="salary-val salary-deduct" id="pr-esi">− ₹315</span></div>
+          <div class="salary-row"><span class="salary-label">Professional Tax</span><span class="salary-val salary-deduct" id="pr-pt">− ₹200</span></div>
+        </div>
+        <div class="net-bar">
+          <span style="font-size:13px;font-weight:600;color:var(--green-dark)">Net Take-home</span>
+          <span style="font-family:'Playfair Display',serif;font-size:1.3rem;font-weight:700;color:var(--green-dark)" id="pr-net">₹37,885</span>
+        </div>
+      </div>
+
+      <!-- PT + Checklist -->
+      <div style="display:flex;flex-direction:column;gap:1rem">
+        <div class="card">
+          <h3>🗺️ State-wise Professional Tax</h3>
+          <p style="font-size:12px;color:var(--text-soft);margin:.3rem 0 .85rem">Every state has different slabs — module auto-applies the right one</p>
+          <div class="pt-row"><div><div style="font-size:12.5px;font-weight:600;color:var(--text)">Karnataka</div><div style="font-size:11px;color:var(--text-soft)">Salary &gt; ₹15,000</div></div><span style="font-size:12.5px;font-weight:700;color:#7B1FA2">₹200/mo</span></div>
+          <div class="pt-row"><div><div style="font-size:12.5px;font-weight:600;color:var(--text)">Maharashtra</div><div style="font-size:11px;color:var(--text-soft)">Salary &gt; ₹10,000</div></div><span style="font-size:12.5px;font-weight:700;color:#7B1FA2">₹200/mo</span></div>
+          <div class="pt-row"><div><div style="font-size:12.5px;font-weight:600;color:var(--text)">Tamil Nadu</div><div style="font-size:11px;color:var(--text-soft)">All employees</div></div><span style="font-size:12.5px;font-weight:700;color:#7B1FA2">₹208/mo</span></div>
+          <div class="pt-row"><div><div style="font-size:12.5px;font-weight:600;color:var(--text)">Andhra Pradesh</div><div style="font-size:11px;color:var(--text-soft)">Salary &gt; ₹15,000</div></div><span style="font-size:12.5px;font-weight:700;color:#7B1FA2">₹200/mo</span></div>
+          <div class="pt-row"><div><div style="font-size:12.5px;font-weight:600;color:var(--text)">West Bengal</div><div style="font-size:11px;color:var(--text-soft)">Salary &gt; ₹10,000</div></div><span style="font-size:12.5px;font-weight:700;color:#7B1FA2">₹110/mo</span></div>
+        </div>
+        <div class="card">
+          <h3>✅ Compliance Checklist</h3>
+          <div style="margin-top:.75rem">
+            <div class="checklist-item"><div class="check-on">✓</div><span style="font-size:12.5px;color:var(--text)">EPF Registration (EPFO)</span></div>
+            <div class="checklist-item"><div class="check-on">✓</div><span style="font-size:12.5px;color:var(--text)">ESI Registration (ESIC)</span></div>
+            <div class="checklist-item"><div class="check-on">✓</div><span style="font-size:12.5px;color:var(--text)">Shop &amp; Establishment License</span></div>
+            <div class="checklist-item"><div class="check-off"></div><span style="font-size:12.5px;color:var(--text-soft)">Professional Tax Enrollment</span></div>
+            <div class="checklist-item"><div class="check-off"></div><span style="font-size:12.5px;color:var(--text-soft)">Minimum Wage Compliance</span></div>
+            <div class="checklist-item"><div class="check-off"></div><span style="font-size:12.5px;color:var(--text-soft)">Form 16 issued to employees</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- PF/ESI Summary -->
+    <div class="card" style="margin-bottom:1.5rem">
+      <h3 style="margin-bottom:1rem">📋 PF &amp; ESI Monthly Contribution Summary</h3>
+      <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:.75rem" id="pf-esi-grid">
+        <div style="background:var(--green-pale);border-radius:10px;padding:.85rem"><div style="font-size:10.5px;color:var(--text-soft);margin-bottom:3px">Employee PF (12%)</div><div style="font-family:'Playfair Display',serif;font-size:1.15rem;font-weight:700;color:var(--green)" id="pf-emp">₹3,600</div></div>
+        <div style="background:var(--green-pale);border-radius:10px;padding:.85rem"><div style="font-size:10.5px;color:var(--text-soft);margin-bottom:3px">Employer PF (12%)</div><div style="font-family:'Playfair Display',serif;font-size:1.15rem;font-weight:700;color:var(--green)" id="pf-er">₹3,600</div></div>
+        <div style="background:var(--purple-pale);border-radius:10px;padding:.85rem"><div style="font-size:10.5px;color:var(--text-soft);margin-bottom:3px">ESI Employee (0.75%)</div><div style="font-family:'Playfair Display',serif;font-size:1.15rem;font-weight:700;color:var(--purple)" id="esi-emp">₹315</div></div>
+        <div style="background:var(--purple-pale);border-radius:10px;padding:.85rem"><div style="font-size:10.5px;color:var(--text-soft);margin-bottom:3px">ESI Employer (3.25%)</div><div style="font-family:'Playfair Display',serif;font-size:1.15rem;font-weight:700;color:var(--purple)" id="esi-er">₹1,365</div></div>
+      </div>
+      <div style="margin-top:.85rem;background:var(--gold-pale);border-radius:10px;padding:.75rem 1rem;border:1px solid var(--gold-light);font-size:12.5px;color:var(--gold)">
+        💡 ECR challan auto-generated for EPFO portal upload. Due 15th every month. ESI challan also due 15th.
+      </div>
+    </div>
+
+    <!-- Monetization -->
+    <div style="background:linear-gradient(135deg,#4A148C,#7B1FA2);border-radius:16px;padding:2rem;color:#fff">
+      <div style="font-family:'Playfair Display',serif;font-size:1.1rem;font-weight:700;margin-bottom:1.25rem">💰 Monetization — HR &amp; Payroll (10× cheaper than Keka)</div>
+      <div style="display:grid;grid-template-columns:repeat(2,1fr);gap:1rem">
+        <div style="background:rgba(255,255,255,.1);border-radius:12px;padding:1rem"><div style="font-size:10px;text-transform:uppercase;letter-spacing:.8px;color:rgba(255,255,255,.5);margin-bottom:4px">Payroll SaaS</div><div style="font-size:1rem;font-weight:700;font-family:'Playfair Display',serif">₹49 / employee / mo</div><div style="font-size:12px;color:rgba(255,255,255,.65);margin-top:3px">20-employee business = ₹980/mo. Keka charges ₹6,999/mo. 10× cheaper.</div></div>
+        <div style="background:rgba(255,255,255,.1);border-radius:12px;padding:1rem"><div style="font-size:10px;text-transform:uppercase;letter-spacing:.8px;color:rgba(255,255,255,.5);margin-bottom:4px">Compliance Filing Service</div><div style="font-size:1rem;font-weight:700;font-family:'Playfair Display',serif;color:#E1BEE7">₹1,499/month</div><div style="font-size:12px;color:rgba(255,255,255,.65);margin-top:3px">PF, ESI challans monthly + 26Q quarterly filed on your behalf. Up to 20 employees.</div></div>
+        <div style="background:rgba(255,255,255,.1);border-radius:12px;padding:1rem"><div style="font-size:10px;text-transform:uppercase;letter-spacing:.8px;color:rgba(255,255,255,.5);margin-bottom:4px">CA Partner Listing</div><div style="font-size:1rem;font-weight:700;font-family:'Playfair Display',serif">₹2,999/month</div><div style="font-size:12px;color:rgba(255,255,255,.65);margin-top:3px">CAs handling SMB payroll pay to be listed and get inbound leads from OSWorks.</div></div>
+        <div style="background:rgba(255,255,255,.1);border-radius:12px;padding:1rem"><div style="font-size:10px;text-transform:uppercase;letter-spacing:.8px;color:rgba(255,255,255,.5);margin-bottom:4px">HR Audit Report</div><div style="font-size:1rem;font-weight:700;font-family:'Playfair Display',serif;color:#E1BEE7">₹999 one-time</div><div style="font-size:12px;color:rgba(255,255,255,.65);margin-top:3px">Audit current payroll setup, flag compliance gaps, provide step-by-step fix list.</div></div>
+      </div>
+    </div>
+  </div>
+  <footer><strong>OSWorks.in</strong> — India-compliant HR &amp; payroll for SMBs</footer>
+</div>
+
+<!-- ═══════════════ VERNACULAR UI ═══════════════ -->
+<div class="pg" id="p-vernacular">
+  <div class="mod-header" style="background:linear-gradient(135deg,#EAF2FF,#FDFAF6)">
+    <div class="inner">
+      <div class="mod-hero-label" style="color:var(--blue)">88% of India thinks in a regional language</div>
+      <div class="mod-hero-title" style="color:var(--text)">Vernacular UI</div>
+      <div class="mod-hero-sub" style="color:var(--text-soft)">Hindi, Tamil, Telugu, Marathi, Gujarati, Kannada — software in the language India thinks in. Not translated from English jargon — written natively.</div>
+    </div>
+  </div>
+  <div class="section">
+    <div class="stat-strip">
+      <div class="stat-box"><div class="stat-box-val" style="color:var(--blue)">88%</div><div class="stat-box-label">SMB owners non-English</div></div>
+      <div class="stat-box"><div class="stat-box-val" style="color:var(--green)">6</div><div class="stat-box-label">Languages targeted</div></div>
+      <div class="stat-box"><div class="stat-box-val" style="color:var(--gold)">55Cr+</div><div class="stat-box-label">Underserved SMB owners</div></div>
+      <div class="stat-box"><div class="stat-box-val" style="color:var(--green)">₹0</div><div class="stat-box-label">Competitor owns this</div></div>
+    </div>
+
+    <!-- Language Cards -->
+    <div class="sec-title" style="margin-bottom:1.5rem">Language coverage</div>
+    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;margin-bottom:1.75rem">
+      <div class="lang-card"><div class="lang-flag">🇮🇳</div><div class="lang-name">हिंदी (Hindi)</div><div class="lang-states">UP, MP, Bihar, Rajasthan, Delhi</div><div class="lang-prog-wrap"><div class="lang-prog" style="width:72%"></div></div><div style="display:flex;justify-content:space-between"><span class="lang-pct">72% complete</span><span class="tag tg">Most adopted</span></div></div>
+      <div class="lang-card"><div class="lang-flag">🌴</div><div class="lang-name">தமிழ் (Tamil)</div><div class="lang-states">Tamil Nadu, Puducherry</div><div class="lang-prog-wrap"><div class="lang-prog" style="width:48%"></div></div><div style="display:flex;justify-content:space-between"><span class="lang-pct">48% complete</span><span class="tag ty">In progress</span></div></div>
+      <div class="lang-card"><div class="lang-flag">⭐</div><div class="lang-name">తెలుగు (Telugu)</div><div class="lang-states">Andhra Pradesh, Telangana</div><div class="lang-prog-wrap"><div class="lang-prog" style="width:35%"></div></div><div style="display:flex;justify-content:space-between"><span class="lang-pct">35% complete</span><span class="tag ty">In progress</span></div></div>
+      <div class="lang-card"><div class="lang-flag">🏔️</div><div class="lang-name">मराठी (Marathi)</div><div class="lang-states">Maharashtra, Goa</div><div class="lang-prog-wrap"><div class="lang-prog" style="width:28%"></div></div><div style="display:flex;justify-content:space-between"><span class="lang-pct">28% complete</span><span class="tag tr">Needs help</span></div></div>
+      <div class="lang-card"><div class="lang-flag">💎</div><div class="lang-name">ગુજરાતી (Gujarati)</div><div class="lang-states">Gujarat, Surat, Ahmedabad</div><div class="lang-prog-wrap"><div class="lang-prog" style="width:22%"></div></div><div style="display:flex;justify-content:space-between"><span class="lang-pct">22% complete</span><span class="tag tr">Needs help</span></div></div>
+      <div class="lang-card"><div class="lang-flag">🌿</div><div class="lang-name">ಕನ್ನಡ (Kannada)</div><div class="lang-states">Karnataka, Bengaluru</div><div class="lang-prog-wrap"><div class="lang-prog" style="width:18%"></div></div><div style="display:flex;justify-content:space-between"><span class="lang-pct">18% complete</span><span class="tag tr">Needs help</span></div></div>
+    </div>
+
+    <div class="g2">
+      <!-- Voice Demo -->
+      <div class="voice-demo">
+        <div style="font-family:'Playfair Display',serif;font-size:1rem;font-weight:700;margin-bottom:.35rem">🎙️ Voice Input in Hindi</div>
+        <div style="font-size:12px;color:rgba(255,255,255,.55);margin-bottom:1.1rem">Shopkeeper speaks — ERPNext stock entry fills automatically</div>
+        <div class="voice-bubble">"पाँच किलो चावल का स्टॉक जोड़ो"</div>
+        <div class="voice-bubble user">Adding 5 kg Rice to stock… ✓</div>
+        <div class="voice-bubble">"रमेश ट्रेडर्स का बिल बनाओ, दो हज़ार रुपये"</div>
+        <div class="voice-bubble user">Invoice INV-2024-112 created for ₹2,000 ✓</div>
+        <div style="margin-top:1rem;font-size:11px;color:rgba(255,255,255,.4)">Powered by Web Speech API · Works on Android Chrome</div>
+      </div>
+
+      <!-- Number formatting + invoice -->
+      <div style="display:flex;flex-direction:column;gap:1rem">
+        <div class="card">
+          <h3>🔢 Indian Number Formatting</h3>
+          <p style="font-size:12px;color:var(--text-soft);margin:.3rem 0 1rem">Western software always gets this wrong — OSWorks fixes it</p>
+          <div style="display:flex;flex-direction:column;gap:.75rem">
+            <div style="display:flex;justify-content:space-between;align-items:center;padding:.6rem;background:var(--red-pale);border-radius:8px">
+              <span style="font-size:12px;color:var(--red)">❌ Western format</span>
+              <span style="font-size:13.5px;font-weight:600;color:var(--red)">₹1,250,000</span>
+            </div>
+            <div style="display:flex;justify-content:space-between;align-items:center;padding:.6rem;background:var(--green-pale);border-radius:8px">
+              <span style="font-size:12px;color:var(--green)">✓ Indian format</span>
+              <span style="font-size:13.5px;font-weight:600;color:var(--green)">₹12,50,000</span>
+            </div>
+            <div style="display:flex;flex-direction:column;gap:.4rem;background:var(--cream);border-radius:8px;padding:.75rem">
+              <div style="display:flex;justify-content:space-between;font-size:12px;color:var(--text-mid)"><span>Date format</span><span style="font-weight:600">DD/MM/YYYY</span></div>
+              <div style="display:flex;justify-content:space-between;font-size:12px;color:var(--text-mid)"><span>Fiscal year</span><span style="font-weight:600">April – March</span></div>
+              <div style="display:flex;justify-content:space-between;font-size:12px;color:var(--text-mid)"><span>Large numbers</span><span style="font-weight:600">Lakh &amp; Crore</span></div>
+            </div>
+          </div>
+        </div>
+        <div class="card">
+          <h3>📄 Regional Invoice Templates</h3>
+          <p style="font-size:12px;color:var(--text-soft);margin:.3rem 0 .85rem">GST invoices in Tamil, Telugu, Marathi, Gujarati — legally valid</p>
+          <div style="display:flex;flex-wrap:wrap;gap:.5rem">
+            <span class="tag tg">हिंदी इनवॉइस</span>
+            <span class="tag tb">தமிழ் இன்வாய்ஸ்</span>
+            <span class="tag ty">తెలుగు ఇన్వాయిస్</span>
+            <span class="tag tp">मराठी बिल</span>
+            <span class="tag tr">ગુજરાતી બિલ</span>
+            <span class="tag tw">ಕನ್ನಡ ಬಿಲ್</span>
+          </div>
+          <div style="margin-top:.9rem;padding:.75rem;background:var(--green-pale);border-radius:9px;font-size:12px;color:var(--green)">✓ All templates include GSTIN, HSN codes, tax breakup in regional script. Legally valid across India.</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Monetization -->
+    <div style="background:linear-gradient(135deg,#1A5276,#2874A6);border-radius:16px;padding:2rem;margin-top:1.5rem;color:#fff">
+      <div style="font-family:'Playfair Display',serif;font-size:1.1rem;font-weight:700;margin-bottom:1.25rem">💰 Monetization — Vernacular UI (Nobody owns this space)</div>
+      <div style="display:grid;grid-template-columns:repeat(2,1fr);gap:1rem">
+        <div style="background:rgba(255,255,255,.1);border-radius:12px;padding:1rem"><div style="font-size:10px;text-transform:uppercase;letter-spacing:.8px;color:rgba(255,255,255,.5);margin-bottom:4px">Translation Bounty Marketplace</div><div style="font-size:1rem;font-weight:700;font-family:'Playfair Display',serif">20% platform fee</div><div style="font-size:12px;color:rgba(255,255,255,.65);margin-top:3px">Businesses post translation bounties (₹5K–₹25K). Developers complete. OSWorks takes 20%.</div></div>
+        <div style="background:rgba(255,255,255,.1);border-radius:12px;padding:1rem"><div style="font-size:10px;text-transform:uppercase;letter-spacing:.8px;color:rgba(255,255,255,.5);margin-bottom:4px">Vernacular Support</div><div style="font-size:1rem;font-weight:700;font-family:'Playfair Display',serif;color:#BBDEFB">₹499/month</div><div style="font-size:12px;color:rgba(255,255,255,.65);margin-top:3px">WhatsApp support in Hindi/regional language for your ERPNext/Odoo setup.</div></div>
+        <div style="background:rgba(255,255,255,.1);border-radius:12px;padding:1rem"><div style="font-size:10px;text-transform:uppercase;letter-spacing:.8px;color:rgba(255,255,255,.5);margin-bottom:4px">Partner Certification</div><div style="font-size:1rem;font-weight:700;font-family:'Playfair Display',serif">₹4,999/year</div><div style="font-size:12px;color:rgba(255,255,255,.65);margin-top:3px">Vernacular deployment partners certified by OSWorks. Fee + referral pipeline.</div></div>
+        <div style="background:rgba(255,255,255,.1);border-radius:12px;padding:1rem"><div style="font-size:10px;text-transform:uppercase;letter-spacing:.8px;color:rgba(255,255,255,.5);margin-bottom:4px">MeitY / SIDBI Grant</div><div style="font-size:1rem;font-weight:700;font-family:'Playfair Display',serif;color:#BBDEFB">₹25L–₹2Cr</div><div style="font-size:12px;color:rgba(255,255,255,.65);margin-top:3px">Government actively funds vernacular digital tools for MSMEs. OSWorks qualifies.</div></div>
+      </div>
+    </div>
+  </div>
+  <footer><strong>OSWorks.in</strong> — Vernacular open source for India</footer>
+</div>
+
+<!-- ═══════════════ WHATSAPP ═══════════════ -->
+<div class="pg" id="p-whatsapp">
+  <div class="mod-header" style="background:linear-gradient(135deg,#E8F5E9,#FDFAF6)">
+    <div class="inner">
+      <div class="mod-hero-label" style="color:#1B5E20">53 crore WhatsApp users in India</div>
+      <div class="mod-hero-title" style="color:var(--text)">WhatsApp-First Workflows</div>
+      <div class="mod-hero-sub" style="color:var(--text-soft)">Run your business where India already is. Invoices, orders, payments, reminders — all on WhatsApp. No new app for your customers to install.</div>
+    </div>
+  </div>
+  <div class="section">
+    <div class="stat-strip">
+      <div class="stat-box"><div class="stat-box-val" style="color:#1B5E20">53Cr</div><div class="stat-box-label">WhatsApp users India</div></div>
+      <div class="stat-box"><div class="stat-box-val" style="color:var(--green)">85%</div><div class="stat-box-label">Message open rate</div></div>
+      <div class="stat-box"><div class="stat-box-val" style="color:var(--red)">₹2,999</div><div class="stat-box-label">Interakt charges/month</div></div>
+      <div class="stat-box"><div class="stat-box-val" style="color:var(--green)">₹799</div><div class="stat-box-label">OSWorks charges/month</div></div>
+    </div>
+
+    <div class="g2" style="margin-bottom:1.5rem">
+      <!-- WA Chat mockup -->
+      <div class="wa-phone">
+        <div class="wa-header">
+          <div class="wa-av">OS</div>
+          <div><div style="font-size:13px;font-weight:600;color:#fff">OSWorks Business Bot</div><div style="font-size:11px;color:rgba(255,255,255,.5)">online</div></div>
+        </div>
+        <div class="wa-msg">Namaste! Your invoice INV-2024-089 for ₹12,400 is ready 📄</div>
+        <div class="wa-msg">Pay now using UPI 👇<br><span style="font-size:11.5px;background:rgba(255,255,255,.15);padding:4px 10px;border-radius:6px;display:inline-block;margin-top:5px">upi://pay?pa=business@upi&am=12400</span></div>
+        <div class="wa-time">10:30 AM ✓✓</div>
+        <div class="wa-msg sent">Paid ✅</div>
+        <div class="wa-time" style="text-align:left;margin-bottom:.5rem">10:32 AM</div>
+        <div class="wa-msg">Payment received! ₹12,400 matched to INV-2024-089. Thank you 🙏</div>
+        <div class="wa-msg">Order karna ho toh "ORDER" type karein 📦</div>
+      </div>
+
+      <!-- WA Features -->
+      <div style="display:flex;flex-direction:column;gap:.75rem">
+        <div class="wa-feature-row">
+          <div class="wa-feature-icon" style="background:var(--green-pale)">📨</div>
+          <div><div style="font-size:13px;font-weight:600;color:var(--text)">Auto Invoice on WhatsApp</div><div style="font-size:12px;color:var(--text-soft);margin-top:2px">Invoice confirmed → PDF + UPI QR sent to customer's WhatsApp instantly. Zero manual steps.</div></div>
+        </div>
+        <div class="wa-feature-row">
+          <div class="wa-feature-icon" style="background:var(--blue-pale)">🤖</div>
+          <div><div style="font-size:13px;font-weight:600;color:var(--text)">Order Management Bot</div><div style="font-size:12px;color:var(--text-soft);margin-top:2px">Customer messages to order → bot checks stock, confirms, creates ERP entry. Hindi + English.</div></div>
+        </div>
+        <div class="wa-feature-row">
+          <div class="wa-feature-icon" style="background:var(--gold-pale)">⏰</div>
+          <div><div style="font-size:13px;font-weight:600;color:var(--text)">Payment Reminder Sequences</div><div style="font-size:12px;color:var(--text-soft);margin-top:2px">D+7 gentle, D+15 firm, D+30 escalation — all WhatsApp, all automated, all in customer's language.</div></div>
+        </div>
+        <div class="wa-feature-row">
+          <div class="wa-feature-icon" style="background:var(--purple-pale)">📢</div>
+          <div><div style="font-size:13px;font-weight:600;color:var(--text)">Customer Broadcast Campaigns</div><div style="font-size:12px;color:var(--text-soft);margin-top:2px">Segment by purchase history → send targeted offers. 85% open rate vs 15% email.</div></div>
+        </div>
+        <div class="wa-feature-row">
+          <div class="wa-feature-icon" style="background:var(--green-pale)">📊</div>
+          <div><div style="font-size:13px;font-weight:600;color:var(--text)">Daily Business Summary</div><div style="font-size:12px;color:var(--text-soft);margin-top:2px">Every evening: today's sales, pending invoices, low stock, top product — one WhatsApp message.</div></div>
+        </div>
+        <div class="wa-feature-row">
+          <div class="wa-feature-icon" style="background:var(--blue-pale)">🛒</div>
+          <div><div style="font-size:13px;font-weight:600;color:var(--text)">Purchase Order via WA</div><div style="font-size:12px;color:var(--text-soft);margin-top:2px">Send PO to supplier on WhatsApp. Supplier replies with delivery date. ERP auto-updates.</div></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Monetization -->
+    <div style="background:linear-gradient(135deg,#1B5E20,#2E7D32);border-radius:16px;padding:2rem;color:#fff">
+      <div style="font-family:'Playfair Display',serif;font-size:1.1rem;font-weight:700;margin-bottom:1.25rem">💰 Monetization — WhatsApp (3× cheaper than Wati/Interakt)</div>
+      <div style="display:grid;grid-template-columns:repeat(2,1fr);gap:1rem">
+        <div style="background:rgba(255,255,255,.1);border-radius:12px;padding:1rem"><div style="font-size:10px;text-transform:uppercase;letter-spacing:.8px;color:rgba(255,255,255,.5);margin-bottom:4px">WhatsApp Automation SaaS</div><div style="font-size:1rem;font-weight:700;font-family:'Playfair Display',serif">₹799/month</div><div style="font-size:12px;color:rgba(255,255,255,.65);margin-top:3px">Full stack: invoices, reminders, order bot, broadcasts. 1,000 outbound messages included.</div></div>
+        <div style="background:rgba(255,255,255,.1);border-radius:12px;padding:1rem"><div style="font-size:10px;text-transform:uppercase;letter-spacing:.8px;color:rgba(255,255,255,.5);margin-bottom:4px">Message Credit Top-ups</div><div style="font-size:1rem;font-weight:700;font-family:'Playfair Display',serif;color:#C8E6C9">₹149 / 500 msgs</div><div style="font-size:12px;color:rgba(255,255,255,.65);margin-top:3px">Additional message packs. 40% margin after Meta's ₹0.35/msg fee.</div></div>
+        <div style="background:rgba(255,255,255,.1);border-radius:12px;padding:1rem"><div style="font-size:10px;text-transform:uppercase;letter-spacing:.8px;color:rgba(255,255,255,.5);margin-bottom:4px">Chatbot Setup Service</div><div style="font-size:1rem;font-weight:700;font-family:'Playfair Display',serif">₹4,999 one-time</div><div style="font-size:12px;color:rgba(255,255,255,.65);margin-top:3px">Fully customized WA bot — catalog, flows, testing. High-value one-time service.</div></div>
+        <div style="background:rgba(255,255,255,.1);border-radius:12px;padding:1rem"><div style="font-size:10px;text-transform:uppercase;letter-spacing:.8px;color:rgba(255,255,255,.5);margin-bottom:4px">Agency Reseller Program</div><div style="font-size:1rem;font-weight:700;font-family:'Playfair Display',serif;color:#C8E6C9">30% margin</div><div style="font-size:12px;color:rgba(255,255,255,.65);margin-top:3px">Digital agencies and CA firms resell OSWorks to their clients. Volume without a sales team.</div></div>
+      </div>
+    </div>
+  </div>
+  <footer><strong>OSWorks.in</strong> — WhatsApp-first workflows for Indian businesses</footer>
+</div>
+
+<!-- ═══════════════ VERTICALS ═══════════════ -->
+<div class="pg" id="p-verticals">
+  <div class="mod-header" style="background:linear-gradient(135deg,#FBE9E7,#FDFAF6)">
+    <div class="inner">
+      <div class="mod-hero-label" style="color:#BF360C">Purpose-built for Indian industries</div>
+      <div class="mod-hero-title" style="color:var(--text)">Industry Verticals</div>
+      <div class="mod-hero-sub" style="color:var(--text-soft)">Generic ERP needs a 6-month implementation. Vertical modules work out-of-the-box for Kirana, Textile, Pharma, Agri, and Construction — zero configuration.</div>
+    </div>
+  </div>
+  <div class="section">
+    <div class="stat-strip">
+      <div class="stat-box"><div class="stat-box-val" style="color:#BF360C">7Cr+</div><div class="stat-box-label">Kirana stores in India</div></div>
+      <div class="stat-box"><div class="stat-box-val" style="color:var(--green)">35L+</div><div class="stat-box-label">Textile units</div></div>
+      <div class="stat-box"><div class="stat-box-val" style="color:var(--blue)">9L+</div><div class="stat-box-label">Pharmacies</div></div>
+      <div class="stat-box"><div class="stat-box-val" style="color:var(--gold)">6</div><div class="stat-box-label">Verticals planned</div></div>
+    </div>
+
+    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:1.2rem">
+      <div class="vert-card">
+        <div class="vert-banner" style="background:linear-gradient(135deg,#FFF8E1,#FFF3CD)">
+          <div><div style="font-size:1.5rem">🛒</div><div style="font-family:'Playfair Display',serif;font-size:1rem;font-weight:700;color:#5D4037">Kirana Suite</div></div>
+          <span class="tag ty">₹199/mo</span>
+        </div>
+        <div class="vert-body">
+          <p>Offline-first Android tablet. Barcode billing, cash + UPI, daily closing report, khata for credit customers, auto reorder alerts. Works without internet.</p>
+          <div style="display:flex;gap:4px;margin-top:.75rem;flex-wrap:wrap"><span class="sk">Flutter</span><span class="sk">SQLite</span><span class="sk">Phoenix API</span></div>
+        </div>
+        <div class="vert-foot"><span style="font-size:11.5px;color:var(--text-soft)">Target: 7Cr kirana stores</span><button class="btn-sm">View module</button></div>
+      </div>
+
+      <div class="vert-card">
+        <div class="vert-banner" style="background:linear-gradient(135deg,#E8EAF6,#E3F2FD)">
+          <div><div style="font-size:1.5rem">🧵</div><div style="font-family:'Playfair Display',serif;font-size:1rem;font-weight:700;color:#1A237E">Textile Tracker</div></div>
+          <span class="tag tb">₹999/mo</span>
+        </div>
+        <div class="vert-body">
+          <p>Design sample library, order tracking by design code, loom-wise production output, dispatch management. Built for Surat, Bhiwandi, Tirupur clusters.</p>
+          <div style="display:flex;gap:4px;margin-top:.75rem;flex-wrap:wrap"><span class="sk">ERPNext App</span><span class="sk">React</span><span class="sk">Supabase</span></div>
+        </div>
+        <div class="vert-foot"><span style="font-size:11.5px;color:var(--text-soft)">Target: 35L textile units</span><button class="btn-sm">View module</button></div>
+      </div>
+
+      <div class="vert-card">
+        <div class="vert-banner" style="background:linear-gradient(135deg,#FFEBEE,#FCE4EC)">
+          <div><div style="font-size:1.5rem">💊</div><div style="font-family:'Playfair Display',serif;font-size:1rem;font-weight:700;color:#B71C1C">Pharma Expiry</div></div>
+          <span class="tag tr">₹499/mo</span>
+        </div>
+        <div class="vert-body">
+          <p>Batch-wise expiry tracking, auto alerts 90/60/30 days before expiry, return-to-distributor workflow, Schedule H drug register compliance.</p>
+          <div style="display:flex;gap:4px;margin-top:.75rem;flex-wrap:wrap"><span class="sk">ERPNext</span><span class="sk">Python</span><span class="sk">SQLite</span></div>
+        </div>
+        <div class="vert-foot"><span style="font-size:11.5px;color:var(--text-soft)">Target: 9L pharmacies</span><button class="btn-sm">View module</button></div>
+      </div>
+
+      <div class="vert-card">
+        <div class="vert-banner" style="background:linear-gradient(135deg,#E8F5E9,#F1F8E9)">
+          <div><div style="font-size:1.5rem">🌾</div><div style="font-family:'Playfair Display',serif;font-size:1rem;font-weight:700;color:#1B5E20">Agri Mandi Tracker</div></div>
+          <span class="tag tg">₹149/mo</span>
+        </div>
+        <div class="vert-body">
+          <p>Live mandi prices via data.gov.in API for 12 major crops. Helps farmers and agri-traders make buy/sell decisions. Integrated with inventory module.</p>
+          <div style="display:flex;gap:4px;margin-top:.75rem;flex-wrap:wrap"><span class="sk">Python</span><span class="sk">data.gov.in</span><span class="sk">Streamlit</span></div>
+        </div>
+        <div class="vert-foot"><span style="font-size:11.5px;color:var(--text-soft)">Target: 12Cr agri traders</span><button class="btn-sm">View module</button></div>
+      </div>
+
+      <div class="vert-card">
+        <div class="vert-banner" style="background:linear-gradient(135deg,#FFF8E1,#FFF3E0)">
+          <div><div style="font-size:1.5rem">🏗️</div><div style="font-family:'Playfair Display',serif;font-size:1rem;font-weight:700;color:#E65100">Construction Log</div></div>
+          <span class="tag ty">₹699/mo</span>
+        </div>
+        <div class="vert-body">
+          <p>Site-wise material consumption, contractor billing, cement/steel procurement log, work completion certificates. For small contractors and builders.</p>
+          <div style="display:flex;gap:4px;margin-top:.75rem;flex-wrap:wrap"><span class="sk">Odoo App</span><span class="sk">Flutter</span><span class="sk">Firebase</span></div>
+        </div>
+        <div class="vert-foot"><span style="font-size:11.5px;color:var(--text-soft)">Target: 50L contractors</span><button class="btn-sm">View module</button></div>
+      </div>
+
+      <div class="vert-card">
+        <div class="vert-banner" style="background:linear-gradient(135deg,#F3E5F5,#EDE7F6)">
+          <div><div style="font-size:1.5rem">🏥</div><div style="font-family:'Playfair Display',serif;font-size:1rem;font-weight:700;color:#4A148C">Clinic Module</div></div>
+          <span class="tag tp">₹599/mo</span>
+        </div>
+        <div class="vert-body">
+          <p>Patient registration, appointments, GST billing, medical records. Compliant with Clinical Establishment Act. For small clinics, labs, and diagnostic centres.</p>
+          <div style="display:flex;gap:4px;margin-top:.75rem;flex-wrap:wrap"><span class="sk">ERPNext</span><span class="sk">Vue.js</span><span class="sk">PostgreSQL</span></div>
+        </div>
+        <div class="vert-foot"><span style="font-size:11.5px;color:var(--text-soft)">Target: 10L+ clinics</span><button class="btn-sm">View module</button></div>
+      </div>
+    </div>
+
+    <div style="background:linear-gradient(135deg,#BF360C,#E64A19);border-radius:16px;padding:2rem;margin-top:1.75rem;color:#fff">
+      <div style="font-family:'Playfair Display',serif;font-size:1.1rem;font-weight:700;margin-bottom:1.25rem">💰 Monetization — Industry Verticals</div>
+      <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:1rem">
+        <div style="background:rgba(255,255,255,.1);border-radius:12px;padding:1rem"><div style="font-size:10px;text-transform:uppercase;letter-spacing:.8px;color:rgba(255,255,255,.5);margin-bottom:4px">Per-Vertical SaaS</div><div style="font-size:1rem;font-weight:700;font-family:'Playfair Display',serif">₹149–999/month</div><div style="font-size:12px;color:rgba(255,255,255,.65);margin-top:3px">Each vertical priced by complexity. Business pays only for their industry's module.</div></div>
+        <div style="background:rgba(255,255,255,.1);border-radius:12px;padding:1rem"><div style="font-size:10px;text-transform:uppercase;letter-spacing:.8px;color:rgba(255,255,255,.5);margin-bottom:4px">Cluster Deployments</div><div style="font-size:1rem;font-weight:700;font-family:'Playfair Display',serif;color:#FFCCBC">₹299 × 500 biz</div><div style="font-size:12px;color:rgba(255,255,255,.65);margin-top:3px">Entire industrial clusters (Surat textiles, Ludhiana hosiery) on shared instance.</div></div>
+        <div style="background:rgba(255,255,255,.1);border-radius:12px;padding:1rem"><div style="font-size:10px;text-transform:uppercase;letter-spacing:.8px;color:rgba(255,255,255,.5);margin-bottom:4px">MSME Scheme Grants</div><div style="font-size:1rem;font-weight:700;font-family:'Playfair Display',serif;color:#FFCCBC">₹50L–₹5Cr</div><div style="font-size:12px;color:rgba(255,255,255,.65);margin-top:3px">Ministry of MSME funds sector-specific digital tools. OSWorks qualifies per vertical.</div></div>
+      </div>
+    </div>
+  </div>
+  <footer><strong>OSWorks.in</strong> — Industry-specific open source for India</footer>
+</div>
+
+<!-- ═══════════════ DIRECTORY ═══════════════ -->
+<div class="pg" id="p-dir">
+  <div class="page-header">
+    <div class="inner">
+      <div class="sec-label">120+ tools reviewed</div>
+      <div class="sec-title" style="font-size:1.9rem;margin:.25rem 0 .4rem">Solutions Directory</div>
+      <p class="sec-sub">Every tool assessed for GST compliance, Hindi/regional UI, WhatsApp integration, and real SMB usability in India.</p>
+    </div>
+  </div>
+  <div class="section">
+    <div class="search-wrap">
+      <input class="search-input" placeholder="Search — e.g. GST billing, inventory, payroll, WhatsApp, Hindi UI…" type="text">
+      <button class="search-btn">Search</button>
+    </div>
+    <div class="filter-bar">
+      <button class="ff on" onclick="flt(this)">All tools</button>
+      <button class="ff" onclick="flt(this)">ERP &amp; Accounting</button>
+      <button class="ff" onclick="flt(this)">CRM &amp; Sales</button>
+      <button class="ff" onclick="flt(this)">HR &amp; Payroll</button>
+      <button class="ff" onclick="flt(this)">Inventory</button>
+      <button class="ff" onclick="flt(this)">Communication</button>
+      <button class="ff" onclick="flt(this)">Analytics</button>
+      <button class="ff" onclick="flt(this)">✓ GST Ready</button>
+      <button class="ff" onclick="flt(this)">हिंदी UI</button>
+      <button class="ff" onclick="flt(this)">WhatsApp API</button>
+      <button class="ff" onclick="flt(this)">UPI Ready</button>
+      <button class="ff" onclick="flt(this)">Free only</button>
+    </div>
+    <div class="g3">
+      <div class="tool-card"><div class="tool-head"><div class="tool-av" style="background:#E8F5ED;color:#2A6045">ERP</div><div class="tool-meta"><h3>ERPNext</h3><p>Full ERP Suite</p></div></div><div class="tags"><span class="tag tg">✓ GST Ready</span><span class="tag tg">Free</span><span class="tag tb">हिंदी UI</span><span class="tag tp">Self-hosted</span><span class="tag tw">UPI Ready</span></div><div class="tool-desc">Complete ERP with accounting, HR, inventory and GST e-invoicing. Most popular for manufacturing and trading SMBs across India.</div><div class="tool-foot"><span>⭐ 4.7 · 1,200+ Indian users</span><button class="btn-sm">View Guide</button></div></div>
+
+      <div class="tool-card"><div class="tool-head"><div class="tool-av" style="background:#EAF2FF;color:#1A5FAB">OD</div><div class="tool-meta"><h3>Odoo</h3><p>Modular Business Suite</p></div></div><div class="tags"><span class="tag tg">✓ GST Ready</span><span class="tag ty">Freemium</span><span class="tag tp">Self-hosted</span><span class="tag tw">UPI Module</span></div><div class="tool-desc">Modular suite covering CRM, sales, e-commerce and accounting. Strong Indian GST and TDS community modules available.</div><div class="tool-foot"><span>⭐ 4.5 · 800+ Indian users</span><button class="btn-sm">View Guide</button></div></div>
+
+      <div class="tool-card"><div class="tool-head"><div class="tool-av" style="background:#F3EBF9;color:#6B27A0">CW</div><div class="tool-meta"><h3>Chatwoot</h3><p>Customer Support</p></div></div><div class="tags"><span class="tag tg">Free</span><span class="tag tp">Self-hosted</span><span class="tag tw">WhatsApp API</span><span class="tag tb">हिंदी UI</span></div><div class="tool-desc">Omnichannel customer support with native WhatsApp Business integration. Ideal for D2C brands and local service businesses.</div><div class="tool-foot"><span>⭐ 4.6 · 650+ Indian users</span><button class="btn-sm">View Guide</button></div></div>
+
+      <div class="tool-card"><div class="tool-head"><div class="tool-av" style="background:#FFF4E5;color:#9A5800">MB</div><div class="tool-meta"><h3>Metabase</h3><p>Business Analytics</p></div></div><div class="tags"><span class="tag tg">Free</span><span class="tag tp">Self-hosted</span></div><div class="tool-desc">Point-and-click business intelligence. Connect to your existing database and build sales dashboards — no SQL needed.</div><div class="tool-foot"><span>⭐ 4.4 · 420+ Indian users</span><button class="btn-sm">View Guide</button></div></div>
+
+      <div class="tool-card"><div class="tool-head"><div class="tool-av" style="background:#E5F6F2;color:#0E7A62">BR</div><div class="tool-meta"><h3>Baserow</h3><p>No-code Database</p></div></div><div class="tags"><span class="tag tg">Free</span><span class="tag tp">Self-hosted</span></div><div class="tool-desc">Build custom databases without code. Replace Excel sheets for inventory tracking, order management, or supplier databases.</div><div class="tool-foot"><span>⭐ 4.3 · 310+ Indian users</span><button class="btn-sm">View Guide</button></div></div>
+
+      <div class="tool-card"><div class="tool-head"><div class="tool-av" style="background:#FFEBEB;color:#C02B2B">GC</div><div class="tool-meta"><h3>GnuCash</h3><p>Accounting &amp; Finance</p></div></div><div class="tags"><span class="tag tg">✓ GST Ready</span><span class="tag tg">Free</span><span class="tag tb">हिंदी UI</span></div><div class="tool-desc">Lightweight desktop accounting with Indian GST community plugins. Best for sole proprietors and micro businesses.</div><div class="tool-foot"><span>⭐ 4.1 · 900+ Indian users</span><button class="btn-sm">View Guide</button></div></div>
+
+      <div class="tool-card"><div class="tool-head"><div class="tool-av" style="background:#E8F5E9;color:#1B5E20">WA</div><div class="tool-meta"><h3>WA Business Stack</h3><p>WhatsApp Automation</p></div></div><div class="tags"><span class="tag tw">WhatsApp API</span><span class="tag tg">Open Source</span><span class="tag tb">हिंदी Bot</span></div><div class="tool-desc">Chatwoot + 360dialog + ERPNext webhook bridge. Invoice delivery, order bot, payment reminders via WhatsApp.</div><div class="tool-foot"><span>⭐ 4.5 · 380+ Indian users</span><button class="btn-sm">View Guide</button></div></div>
+
+      <div class="tool-card"><div class="tool-head"><div class="tool-av" style="background:#FFF4E5;color:#9A5800">KR</div><div class="tool-meta"><h3>Kirana OS</h3><p>Retail &amp; Kirana</p></div></div><div class="tags"><span class="tag tg">✓ GST Ready</span><span class="tag tw">UPI Ready</span><span class="tag tb">हिंदी UI</span><span class="tag tg">Offline-first</span></div><div class="tool-desc">Offline-first Android billing app for kirana stores. Barcode, UPI QR, khata, daily closing report. Works without internet.</div><div class="tool-foot"><span>⭐ 4.6 · 520+ Indian users</span><button class="btn-sm">View Guide</button></div></div>
+
+      <div class="tool-card"><div class="tool-head"><div class="tool-av" style="background:#F3EBF9;color:#6B27A0">PR</div><div class="tool-meta"><h3>PayrollOS India</h3><p>HR &amp; Payroll</p></div></div><div class="tags"><span class="tag tg">Free</span><span class="tag tp">PF + ESI</span><span class="tag tb">Form 16</span><span class="tag ty">28 States PT</span></div><div class="tool-desc">India-compliant payroll. PF, ESI, state-wise professional tax, Form 16 generator. ERPNext extension — works out of box.</div><div class="tool-foot"><span>⭐ 4.4 · 290+ Indian users</span><button class="btn-sm">View Guide</button></div></div>
+    </div>
+    <button class="load-more">Load 20 more tools</button>
+  </div>
+  <footer><strong>OSWorks.in</strong> — Open source solutions for Indian small businesses</footer>
+</div>
+
+<!-- ═══════════════ COMMUNITY ═══════════════ -->
+<div class="pg" id="p-comm">
+  <div class="page-header">
+    <div class="inner">
+      <div class="sec-label">2,400+ developers across India</div>
+      <div class="sec-title" style="font-size:1.9rem;margin:.25rem 0 .4rem">Developer Community Hub</div>
+      <p class="sec-sub">Contribute GST plugins, UPI modules, Hindi translations, and vertical tools. Earn bounties. Get hired.</p>
+    </div>
+  </div>
+  <div class="section">
+    <div class="notify">🏆 Live bounty: Build UPI auto-reconciliation for ERPNext — <strong style="margin-left:4px">₹15,000 open</strong> &nbsp;|&nbsp; Hindi Chatwoot completion — <strong>₹8,000 open</strong></div>
+    <div class="badge-row">
+      <div class="badge"><div class="badge-dot" style="background:var(--green)"></div>GST Expert</div>
+      <div class="badge"><div class="badge-dot" style="background:var(--blue)"></div>Hindi Translator</div>
+      <div class="badge"><div class="badge-dot" style="background:var(--purple)"></div>Odoo Contributor</div>
+      <div class="badge"><div class="badge-dot" style="background:var(--gold)"></div>Plugin Builder</div>
+      <div class="badge"><div class="badge-dot" style="background:var(--red)"></div>Top Reviewer</div>
+      <div class="badge"><div class="badge-dot" style="background:#0E7A62"></div>Deployment Guide</div>
+      <div class="badge"><div class="badge-dot" style="background:#1B5E20"></div>WhatsApp Dev</div>
+      <div class="badge"><div class="badge-dot" style="background:#BF360C"></div>Vertical Builder</div>
+    </div>
+    <div style="display:grid;grid-template-columns:280px 1fr;gap:1.5rem;align-items:start">
+      <div style="display:flex;flex-direction:column;gap:1rem">
+        <div class="leaderboard">
+          <div class="lb-head">🏆 Top contributors · June 2025</div>
+          <div class="lb-row"><span class="lb-n">1</span><div class="lb-av" style="background:#E8F5ED;color:#2A6045">AK</div><div class="lb-info"><div class="lb-name">Arjun Kumar</div><div class="lb-loc">Bengaluru · GST Expert</div></div><div class="lb-pts">2,840</div></div>
+          <div class="lb-row"><span class="lb-n">2</span><div class="lb-av" style="background:#EAF2FF;color:#1A5FAB">PS</div><div class="lb-info"><div class="lb-name">Priya Shankar</div><div class="lb-loc">Chennai · Translator</div></div><div class="lb-pts">2,410</div></div>
+          <div class="lb-row"><span class="lb-n">3</span><div class="lb-av" style="background:#F3EBF9;color:#6B27A0">RV</div><div class="lb-info"><div class="lb-name">Rohit Verma</div><div class="lb-loc">Pune · WA Dev</div></div><div class="lb-pts">1,990</div></div>
+          <div class="lb-row"><span class="lb-n">4</span><div class="lb-av" style="background:#FFF4E5;color:#9A5800">NM</div><div class="lb-info"><div class="lb-name">Neha Mishra</div><div class="lb-loc">Hyderabad · Odoo</div></div><div class="lb-pts">1,760</div></div>
+          <div class="lb-row"><span class="lb-n">5</span><div class="lb-av" style="background:#FFEBEB;color:#C02B2B">SK</div><div class="lb-info"><div class="lb-name">Siddharth Kaur</div><div class="lb-loc">Delhi · ERPNext</div></div><div class="lb-pts">1,520</div></div>
+        </div>
+        <div style="background:var(--white);border:1px solid var(--border-soft);border-radius:14px;padding:1.2rem;box-shadow:var(--shadow)">
+          <div style="font-weight:600;font-size:.9rem;color:var(--text);margin-bottom:.85rem">How to contribute</div>
+          <div style="display:flex;flex-direction:column;gap:.55rem">
+            <div style="display:flex;gap:9px;align-items:start"><div style="width:25px;height:25px;background:var(--green-pale);border-radius:7px;display:flex;align-items:center;justify-content:center;font-size:12px;flex-shrink:0">🧾</div><div><div style="font-size:12.5px;font-weight:500;color:var(--text)">GST Plugins</div><div style="font-size:11.5px;color:var(--text-soft)">IRN, e-way bill, 2A reconciliation</div></div></div>
+            <div style="display:flex;gap:9px;align-items:start"><div style="width:25px;height:25px;background:var(--blue-pale);border-radius:7px;display:flex;align-items:center;justify-content:center;font-size:12px;flex-shrink:0">🌐</div><div><div style="font-size:12.5px;font-weight:500;color:var(--text)">Translations</div><div style="font-size:11.5px;color:var(--text-soft)">Hindi, Tamil, Telugu, Marathi guides</div></div></div>
+            <div style="display:flex;gap:9px;align-items:start"><div style="width:25px;height:25px;background:var(--gold-pale);border-radius:7px;display:flex;align-items:center;justify-content:center;font-size:12px;flex-shrink:0">💳</div><div><div style="font-size:12.5px;font-weight:500;color:var(--text)">UPI Modules</div><div style="font-size:11.5px;color:var(--text-soft)">Reconciliation, QR gen, Khata</div></div></div>
+            <div style="display:flex;gap:9px;align-items:start"><div style="width:25px;height:25px;background:var(--purple-pale);border-radius:7px;display:flex;align-items:center;justify-content:center;font-size:12px;flex-shrink:0">🏭</div><div><div style="font-size:12.5px;font-weight:500;color:var(--text)">Vertical Apps</div><div style="font-size:11.5px;color:var(--text-soft)">Kirana, Textile, Pharma, Agri</div></div></div>
+          </div>
+        </div>
+      </div>
+      <div>
+        <div style="font-family:'Playfair Display',serif;font-weight:600;font-size:1rem;color:var(--text);margin-bottom:.85rem">Recent community activity</div>
+        <div class="act-feed">
+          <div class="act-item"><div class="act-dot" style="background:var(--green)"></div><div><div class="act-text"><strong>Arjun Kumar</strong> published a GST e-invoicing plugin for ERPNext v15 — IRN + QR on every invoice</div><div class="act-time">2 hours ago · GST Suite · Bengaluru</div></div></div>
+          <div class="act-item"><div class="act-dot" style="background:var(--blue)"></div><div><div class="act-text"><strong>Priya Shankar</strong> completed Hindi translation for Chatwoot onboarding — 2,400 words merged</div><div class="act-time">5 hours ago · Vernacular · Chennai</div></div></div>
+          <div class="act-item"><div class="act-dot" style="background:var(--gold)"></div><div><div class="act-text"><strong>Rohit Verma</strong> opened bounty: "UPI auto-reconciliation for Baserow — ₹8,000"</div><div class="act-time">1 day ago · UPI Module · Pune</div></div></div>
+          <div class="act-item"><div class="act-dot" style="background:var(--purple)"></div><div><div class="act-text"><strong>Neha Mishra</strong> submitted case study: Kirana Suite deployed in 14 shops in Hyderabad cluster</div><div class="act-time">2 days ago · Kirana Vertical · Hyderabad</div></div></div>
+          <div class="act-item"><div class="act-dot" style="background:var(--red)"></div><div><div class="act-text"><strong>Team VIT Chennai</strong> submitted: GST Invoice Generator with IRN + QR code — seeking adoption</div><div class="act-time">3 days ago · Student Project</div></div></div>
+          <div class="act-item"><div class="act-dot" style="background:#0E7A62"></div><div><div class="act-text"><strong>Siddharth Kaur</strong> published: "WhatsApp order bot for ERPNext — full setup guide with 360dialog"</div><div class="act-time">4 days ago · WhatsApp Module · Delhi</div></div></div>
+          <div class="act-item"><div class="act-dot" style="background:var(--green)"></div><div><div class="act-text"><strong>Megha Rathi</strong> added the first Marathi UI guide for GnuCash + state PT slab database</div><div class="act-time">5 days ago · Vernacular · Nagpur</div></div></div>
+          <div class="act-item"><div class="act-dot" style="background:#BF360C)"></div><div><div class="act-text"><strong>Dinesh Rao</strong> released Textile Order Tracker v0.2 — now supports Bhiwandi cluster design codes</div><div class="act-time">6 days ago · Textile Vertical · Surat</div></div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <footer><strong>OSWorks.in</strong> — Open source solutions for Indian small businesses</footer>
+</div>
+
+<!-- ═══════════════ RESOURCES ═══════════════ -->
+<div class="pg" id="p-res">
+  <div class="page-header">
+    <div class="inner">
+      <div class="sec-label">Practical implementation support</div>
+      <div class="sec-title" style="font-size:1.9rem;margin:.25rem 0 .4rem">Resources &amp; Deployments</div>
+      <p class="sec-sub">Real case studies, step-by-step guides for GST, UPI, payroll, vernacular, and WhatsApp setups.</p>
+    </div>
+  </div>
+  <div class="section">
+    <div class="g2">
+      <div>
+        <div class="sec-label" style="margin-bottom:.9rem">Deployment guides</div>
+        <div class="col-gap">
+          <div class="guide-item"><div class="guide-num">01</div><div class="guide-con"><h4>ERPNext: Complete GST setup for Indian businesses</h4><p>GSTIN, HSN codes, e-invoicing IRN, and GSTR reports — full walkthrough</p><em>🕐 45 min · Beginner-friendly</em></div></div>
+          <div class="guide-item"><div class="guide-num">02</div><div class="guide-con"><h4>UPI QR on Invoices + Auto-Reconciliation with ERPNext</h4><p>Configure UPI QR generation and bank SMS-based auto-matching</p><em>🕐 60 min · Intermediate</em></div></div>
+          <div class="guide-item"><div class="guide-num">03</div><div class="guide-con"><h4>India Payroll in ERPNext: PF, ESI, PT, Form 16</h4><p>Configure all statutory deductions with state-wise PT slabs</p><em>🕐 90 min · Intermediate</em></div></div>
+          <div class="guide-item"><div class="guide-num">04</div><div class="guide-con"><h4>Chatwoot + WhatsApp Business API on ₹500/mo VPS</h4><p>Self-host Chatwoot with 360dialog WhatsApp on a budget VPS in India</p><em>🕐 90 min · Intermediate</em></div></div>
+          <div class="guide-item"><div class="guide-num">05</div><div class="guide-con"><h4>ERPNext Hindi UI: Full vernacular setup guide (हिंदी)</h4><p>Enable Hindi interface, regional invoice templates, voice input</p><em>🕐 30 min · Beginner-friendly</em></div></div>
+          <div class="guide-item"><div class="guide-num">06</div><div class="guide-con"><h4>Kirana Suite: Offline billing on ₹5,000 Android tablet</h4><p>Deploy offline-first kirana app — barcode, UPI, khata, daily report</p><em>🕐 20 min · Beginner-friendly</em></div></div>
+          <div class="guide-item"><div class="guide-num">07</div><div class="guide-con"><h4>WhatsApp Order Bot for ERPNext with 360dialog API</h4><p>Customer orders on WA → ERP entry auto-created with stock check</p><em>🕐 2 hrs · Advanced</em></div></div>
+          <div class="guide-item"><div class="guide-num">08</div><div class="guide-con"><h4>Pharma Expiry Tracker: Batch tracking + expiry alerts</h4><p>Setup ERPNext pharma module with Schedule H compliance</p><em>🕐 45 min · Intermediate</em></div></div>
+        </div>
+      </div>
+      <div>
+        <div class="sec-label" style="margin-bottom:.9rem">Real deployment case studies</div>
+        <div class="col-gap">
+          <div class="case-card">
+            <div class="case-top"><div><div class="case-biz">Sharma Textiles</div><div class="case-loc">📍 Surat, Gujarat · 35 employees</div></div><div class="case-tool">ERPNext + GST Suite</div></div>
+            <div class="case-quote">"We were spending ₹40,000 per year on Tally. OSWorks GST Suite handles our GSTR, IRN, and e-way bills — zero software cost now."</div>
+            <div class="case-stats"><div class="cs"><strong>₹0</strong><span>Monthly software cost</span></div><div class="cs"><strong>6 weeks</strong><span>Time to deploy</span></div><div class="cs"><strong>3 hrs</strong><span>Saved on GST monthly</span></div></div>
+          </div>
+          <div class="case-card">
+            <div class="case-top"><div><div class="case-biz">Rathore Auto Parts</div><div class="case-loc">📍 Jaipur, Rajasthan · 12 employees</div></div><div class="case-tool">Kirana Suite + Khata</div></div>
+            <div class="case-quote">"The Khata module replaced our physical udhaari book. WhatsApp reminders recovered ₹80,000 in overdue payments in the first month."</div>
+            <div class="case-stats"><div class="cs"><strong>₹80K</strong><span>Recovered in month 1</span></div><div class="cs"><strong>2 days</strong><span>Setup time</span></div><div class="cs"><strong>Free</strong><span>Total software cost</span></div></div>
+          </div>
+          <div class="case-card">
+            <div class="case-top"><div><div class="case-biz">Mehta Medical Hall</div><div class="case-loc">📍 Ahmedabad, Gujarat · 4 employees</div></div><div class="case-tool">Pharma Expiry + GST</div></div>
+            <div class="case-quote">"Expiry alerts saved us from writing off ₹25,000 in medicines. The Hindi interface means our staff can use it without any training."</div>
+            <div class="case-stats"><div class="cs"><strong>₹25K</strong><span>Losses prevented</span></div><div class="cs"><strong>1 day</strong><span>Setup in Hindi</span></div><div class="cs"><strong>₹199</strong><span>Monthly cost</span></div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="cta-bar">
+      <div><div class="label">Need deployment help?</div><div class="sub">Connect with a verified implementation partner in your city — vetted by the OSWorks community, fluent in your language.</div></div>
+      <button>Find a partner →</button>
+    </div>
+  </div>
+  <footer><strong>OSWorks.in</strong> — Open source solutions for Indian small businesses</footer>
+</div>
+
+<script>
+// ── Navigation ──
+function go(n,btn){
+  document.querySelectorAll('.pg').forEach(p=>p.classList.remove('on'));
+  var pid='p-'+n;
+  document.getElementById(pid).classList.add('on');
+  document.querySelectorAll('.nb').forEach(b=>b.classList.remove('on'));
+  if(btn){btn.classList.add('on')}
+  else{
+    var m={home:0,gst:1,upi:2,payroll:3,vernacular:4,whatsapp:5,verticals:6,dir:7,comm:8,res:9};
+    var i=m[n];if(i!=null)document.querySelectorAll('.nb')[i].classList.add('on');
+  }
+  window.scrollTo(0,0);
+}
+
+// ── Filter ──
+function flt(b){document.querySelectorAll('.ff').forEach(x=>x.classList.remove('on'));b.classList.add('on')}
+
+// ── HSN Finder ──
+var HSN={
+  'cotton':{code:'5208',rate:'5%',desc:'Woven fabrics of cotton'},
+  'rice':{code:'1006',rate:'0%',desc:'Rice — unbranded'},
+  'mobile':{code:'8517',rate:'18%',desc:'Telephone sets including smartphones'},
+  'software':{code:'9983',rate:'18%',desc:'IT & software services (SAC)'},
+  'cement':{code:'2523',rate:'28%',desc:'Portland cement and clinker'},
+  'gold':{code:'7108',rate:'3%',desc:'Gold in raw form'},
+  'textiles':{code:'5407',rate:'5%',desc:'Woven fabrics of synthetic filament'},
+  'medicine':{code:'3004',rate:'12%',desc:'Medicaments for retail sale'},
+  'laptop':{code:'8471',rate:'18%',desc:'Automatic data processing machines'},
+  'shoes':{code:'6403',rate:'18%',desc:'Footwear with outer soles of rubber'},
+  'consulting':{code:'9983',rate:'18%',desc:'Professional, technical & business services (SAC)'},
+  'transport':{code:'9965',rate:'5%',desc:'Goods transport services (SAC)'}
+};
+function hsnSearch(){
+  var q=document.getElementById('hsn-input').value.toLowerCase().trim();
+  var r=null;
+  for(var k in HSN){if(q.indexOf(k)>=0){r=HSN[k];break;}}
+  var el=document.getElementById('hsn-result');
+  if(r){
+    document.getElementById('hsn-code').textContent=r.code;
+    document.getElementById('hsn-rate').textContent=r.rate;
+    document.getElementById('hsn-desc').textContent=r.desc;
+  } else {
+    document.getElementById('hsn-code').textContent='—';
+    document.getElementById('hsn-rate').textContent='—';
+    document.getElementById('hsn-desc').textContent='Not found. Try: cotton, mobile, rice, software, cement, medicine, laptop, consulting';
+  }
+  el.style.display='flex';
+}
+
+// ── UPI QR ──
+function updateUPI(){
+  var v=parseInt(document.getElementById('upi-amount').value)||0;
+  document.getElementById('upi-display').textContent=v.toLocaleString('en-IN');
+}
+
+// ── Payroll Calculator ──
+function updatePayroll(){
+  var basic=parseInt(document.getElementById('basic-slider').value);
+  var hra=Math.round(basic*0.4);
+  var gross=basic+hra;
+  var pf=Math.round(basic*0.12);
+  var esiRate=basic<=21000?0.0075:0;
+  var esi=Math.round(gross*esiRate);
+  var pt=basic>15000?200:basic>10000?150:0;
+  var net=gross-pf-esi-pt;
+
+  var fmt=function(n){return '₹'+n.toLocaleString('en-IN');};
+
+  document.getElementById('basic-display').textContent=fmt(basic);
+  document.getElementById('pr-basic').textContent=fmt(basic);
+  document.getElementById('pr-hra').textContent=fmt(hra);
+  document.getElementById('pr-gross').textContent=fmt(gross);
+  document.getElementById('pr-pf').textContent='− '+fmt(pf);
+  document.getElementById('pr-esi-lbl').textContent=basic>21000?'ESI (exempt — salary above ₹21K)':'ESI (0.75%)';
+  document.getElementById('pr-esi').textContent=basic>21000?'₹0':'− '+fmt(esi);
+  document.getElementById('pr-pt').textContent='− '+fmt(pt);
+  document.getElementById('pr-net').textContent=fmt(net);
+
+  document.getElementById('pf-emp').textContent=fmt(pf);
+  document.getElementById('pf-er').textContent=fmt(pf);
+  document.getElementById('esi-emp').textContent=basic>21000?'Exempt':fmt(esi);
+  document.getElementById('esi-er').textContent=basic>21000?'Exempt':fmt(Math.round(gross*0.0325));
+}
+</script>
+</body>
+</html>
